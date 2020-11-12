@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "webpack -d -watch",
-    "start": "nodemon ./server/app.js"
+    "start": "nodemon ./server/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
