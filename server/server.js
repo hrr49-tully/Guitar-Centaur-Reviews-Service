@@ -8,7 +8,7 @@ const PORT = 4000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(express.static(__dirname + '/../client/dist'));
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
