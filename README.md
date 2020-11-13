@@ -4,10 +4,11 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrr49-tully
+  - https://github.com/mmickeyd
+  - https://github.com/hrr49-tully/Guitar-Centaur-Reviews-Service
+  - https://github.com/hrr49-tully/Guitar-Centaur-Add-to-Cart
+  - https://github.com/hrr49-tully/Guitar-Centaur-Carousel
 
 ## Table of Contents
 
@@ -17,7 +18,7 @@
 
 ## Usage
 
-> Some usage instructions
+> This is a standalone version of a review component from Guitar Center's website that will have full functionaliy to sort by lowest/highest reviews as well as best rated, oldest, etc.
 
 ## Requirements
 

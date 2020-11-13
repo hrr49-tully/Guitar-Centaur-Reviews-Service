@@ -1,9 +1,7 @@
 {
-  "name": "reviews",
-  "version": "1.0.0",
-  "description": "reviews of guitars",
-  "author": "Mitch McDermott",
-  "main": "index.js",
+  "name": "guitar-centaur-reviews-service",
+  "description": "Guitar-Centaur-Reviews-Service",
+  "author": "mmickeyd",
   "engines": {
     "node": ">=6.13.0"
   },
@@ -21,6 +19,7 @@
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "faker": "^5.1.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6",
     "react": "^17.0.1",

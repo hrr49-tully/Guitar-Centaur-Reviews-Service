@@ -5,13 +5,13 @@ USE guitarReviews;
 
 CREATE TABLE reviews (
   id int not null auto_increment primary key,
-  title varchar (50) not null,
+  title varchar (70) not null,
   contents text,
   stars int not null,
-  user varchar(25),
-  experience varchar(10),
+  user varchar(30),
+  experience varchar(20),
   dateSubmitted timestamp,
-  location varchar(30),
+  location varchar(35),
   upVotes int(3) not null default 0,
   downVotes int(3) not null default 0,
   pros varchar(75),
