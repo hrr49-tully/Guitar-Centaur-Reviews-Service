@@ -7,6 +7,8 @@ let pros = [];
 let cons = [];
 
 for (let i = 0; i < 10; i++) {
+
+
   let randomReview = {
     id: i,
     title: faker.lorem.sentence(),
