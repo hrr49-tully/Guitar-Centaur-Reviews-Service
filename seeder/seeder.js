@@ -95,7 +95,14 @@ for (let i = 0; i < cons.length; i++) {
 }
 
 // seeds reviews into database
-
+for (let i = 0; i < reviews.length; i++) {
+  let review = reviews[i];
+  db.query('insert into reviews (id, title, contents, stars, user, experience, dateSubmitted, location, upVotes, downVotes, pros, cons, wouldRecommend) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [review.id, review.title, review.contents, review.stars, review.user, review.experience, review.dateSubmitted, review.location, review.upVotes, review.downVotes, review.pros, review.cons, review.wouldRecommend], (err, data) => {
+    if (err) {
+      throw err;
+    }
+  })
+}
 
 // seeds pros into database
 
