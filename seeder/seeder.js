@@ -101,6 +101,8 @@ for (let i = 0; i < reviews.length; i++) {
     if (err) {
       console.error(err);
       throw err;
+    } else {
+      console.log('review logged in database');
     }
   })
 }
@@ -112,10 +114,24 @@ for (let i = 0; i < prosObjects.length; i++) {
     if (err) {
       console.error(err);
       throw err;
+    } else {
+      console.log('pro logged in database');
     }
   })
 }
 
 // seeds cons into database
+for (let i = 0; i < consObjects.length; i++) {
+  let con = consObjects[i];
+  db.query('insert into cons (conID, description, count) values (?, ?, ?', [con.conID, con.description, con.count], (err, data) => {
+    if (err) {
+      console.error(err);
+      throw err;
+    } else {
+      console.log('con logged in database');
+    }
+  })
+}
+
 
 db.end();
