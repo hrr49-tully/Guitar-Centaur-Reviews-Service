@@ -7,6 +7,9 @@ let pros = [];
 let cons = [];
 
 for (let i = 0; i < 10; i++) {
+  let prosArr = ['Fun To Play', 'Good Feel', 'Good Tone', 'Good Pick Up', 'Solid Electronics', 'Visuals'];
+  let consArr = ['Flat Sound', 'Fret Buzz', 'Poor Pick Up', 'Poor Quality Craftsmanship'];
+  let experienceArr = ['Kook', 'Novice', 'Experienced', 'Rockstar'];
 
 
   let randomReview = {
