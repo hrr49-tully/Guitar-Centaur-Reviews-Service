@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const faker = require('faker');
-const db = require('../server/db/index/js');
+const db = require('../server/db/index.js');
 
 // result arrays of all reviews/pros/cons
 let reviews = [];
@@ -65,8 +65,8 @@ for (let i = 0; i < 100; i++) {
     location: faker.address.city() + ', ' + faker.address.state(),
     upVotes: faker.random.number({'min': 1, 'max': 50}),
     downVotes: faker.random.number({'min': 1, 'max': 30}),
-    pros: reviewPros,
-    cons: reviewCons,
+    pros: reviewPros.toString(),
+    cons: reviewCons.toString(),
     wouldRecommend: faker.random.boolean()
   }
   reviews.push(randomReview);
@@ -110,7 +110,7 @@ for (let i = 0; i < reviews.length; i++) {
 // seeds pros into database
 for (let i = 0; i < prosObjects.length; i++) {
   let pro = prosObjects[i];
-  db.query('insert into pros (proID, description, count) values (?, ?, ?', [pro.proID, pro.description, pro.count], (err, data) => {
+  db.query('insert into pros (proID, description, count) values (?, ?, ?)', [pro.proID, pro.description, pro.count], (err, data) => {
     if (err) {
       console.error(err);
       throw err;
@@ -123,7 +123,7 @@ for (let i = 0; i < prosObjects.length; i++) {
 // seeds cons into database
 for (let i = 0; i < consObjects.length; i++) {
   let con = consObjects[i];
-  db.query('insert into cons (conID, description, count) values (?, ?, ?', [con.conID, con.description, con.count], (err, data) => {
+  db.query('insert into cons (conID, description, count) values (?, ?, ?)', [con.conID, con.description, con.count], (err, data) => {
     if (err) {
       console.error(err);
       throw err;

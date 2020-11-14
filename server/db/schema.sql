@@ -21,12 +21,12 @@ CREATE TABLE reviews (
 
 CREATE TABLE pros (
   proID int not null auto_increment primary key,
-  description varchar(25) not null,
+  description varchar(40) not null,
   count int not null default 0
 );
 
 CREATE TABLE cons (
   conID int not null auto_increment primary key,
-  description varchar(25) not null,
+  description varchar(40) not null,
   count int not null default 0
 );
