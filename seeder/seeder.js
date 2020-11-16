@@ -52,12 +52,35 @@ for (let i = 0; i < 100; i++) {
   let timestamp = faker.date.past(200).toString().split(' ');
   let date = timestamp[1] + ' ' + timestamp[2] + ','+ timestamp[3];
 
+  description = (string) => {
+    let stringArr = string.split(/[ -]+/);
+    let firstWord = stringArr[0].split('');
+    firstWord[0] = firstWord[0].toUpperCase();
+    stringArr[0] = firstWord.join('');
+    for (let i = 1; i < stringArr.length; i++) {
+      stringArr[i] = stringArr[i].toLowerCase();
+    }
+    return stringArr.join(' ');
+  }
+
+  capitalizeTitle = (string) => {
+    let stringArr = string.split(/[ -]+/);
+    for (let i = 0; i < stringArr.length; i++) {
+      let word = stringArr[i].split('');
+      word[0] = word[0].toUpperCase();
+      stringArr[i] = word.join('');
+    }
+    return stringArr.join(' ');
+  }
+
+  let contents = description(faker.random.words(40));
+  let title = capitalizeTitle(faker.random.words(2) + ' ' + faker.commerce.productName());
 
   // creates a random review
   let randomReview = {
     id: i + 1,
-    title: faker.random.words(2) + ' ' + faker.commerce.productName(),
-    contents: faker.random.words(40),
+    title: title,
+    contents: contents,
     stars: faker.random.number({'min': 1, 'max': 5}),
     user: faker.name.firstName() + ' ' + faker.name.lastName(),
     experience: randomExperience,
