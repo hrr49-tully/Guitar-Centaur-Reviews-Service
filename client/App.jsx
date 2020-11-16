@@ -10,11 +10,10 @@ class App extends React.Component {
     }
   }
 
-
   render() {
     return (
       <div>
-        <h1>WE GOTTA WEBPAGE FAM</h1>
+        <h1>Guitar Reviews</h1>
       </div>
     )
   }
