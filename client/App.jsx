@@ -21,13 +21,16 @@ class App extends React.Component {
           reviews: res.data
         }))
       })
+      .catch(err => {
+        console.log('reviews get request failed: ', err);
+      })
   }
 
   render() {
     return (
       <div>
         <h1>Guitar Reviews</h1>
-        <ReviewsList />
+        <ReviewsList reviews={this.state.reviews}/>
       </div>
     )
   }

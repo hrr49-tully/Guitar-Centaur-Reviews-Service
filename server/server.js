@@ -13,9 +13,10 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.get('/guitar/reviews', (req, res) => {
   db.query('select * from reviews', (err, data) => {
     if (err) {
+      console.log('get reviews error:', err)
       throw err;
     } else {
-      console.log('data from database query:', JSON.stringify(data));
+      console.log('reviews query successful');
       res.send(JSON.stringify(data));
     }
   })
