@@ -15,6 +15,7 @@ module.exports = {
     fs: 'empty',
     net: 'empty'
   },
+
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
