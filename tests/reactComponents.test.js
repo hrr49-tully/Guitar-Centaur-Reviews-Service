@@ -1,8 +1,8 @@
 const enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
-const App = require('./client/App.jsx').default;
-const ReviewEntry = require('./client/components/ReviewEntry.jsx').default;
-const ReviewList = require('./client/components/ReviewsList.jsx').default;
+const App = require('../client/App.jsx').default;
+const ReviewEntry = require('../client/components/ReviewEntry.jsx').default;
+const ReviewList = require('../client/components/ReviewsList.jsx').default;
 const React = require('react');
 enzyme.configure({ adapter: new Adapter() });
 

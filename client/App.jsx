@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('guitar/reviews')
+    axios.get('/guitar/reviews')
       .then(res => {
         this.setState(state => ({
           renderedReviews: res.data.slice(0, 10),
