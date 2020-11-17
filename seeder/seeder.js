@@ -113,7 +113,7 @@ for (let i = 0; i < cons.length; i++) {
     conID: i + 1,
     description: cons[i],
     count: consCount[i]
-  }
+  };
   consObjects.push(singleCon);
 }
 
@@ -127,7 +127,7 @@ for (let i = 0; i < reviews.length; i++) {
     } else {
       console.log('review logged in database');
     }
-  })
+  });
 }
 
 // seeds pros into database
@@ -140,7 +140,7 @@ for (let i = 0; i < prosObjects.length; i++) {
     } else {
       console.log('pro logged in database');
     }
-  })
+  });
 }
 
 // seeds cons into database
@@ -153,7 +153,7 @@ for (let i = 0; i < consObjects.length; i++) {
     } else {
       console.log('con logged in database');
     }
-  })
+  });
 }
 
 
