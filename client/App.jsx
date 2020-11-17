@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import faker from 'faker/locale/en_US';
 import axios from 'axios';
 import ReviewsList from './components/ReviewsList.jsx';
 
@@ -32,9 +31,11 @@ class App extends React.Component {
           renderedReviews: res.data.slice(0, 10),
           allReviews: res.data
         }))
+        console.log(this.state);
       })
       .catch(err => {
         console.log('reviews get request failed: ', err);
+        throw err;
       })
   }
 
