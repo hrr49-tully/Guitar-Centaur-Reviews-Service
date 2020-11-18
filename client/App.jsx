@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReviewsList from './components/ReviewsList.jsx';
+import ProsList from './components/ProsList.jsx';
+import ConsList from './components/ConsList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -52,8 +54,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Guitar Reviews</h1>
-        <ProsList />
-        <ConsList />
+        <ProsList pros={this.state.pros} />
+        <br/>
+        <ConsList cons={this.state.cons} />
+        <br/><br/>
         <ReviewsList reviews={this.state.renderedReviews}/>
         <button onClick={() => {this.showMoreReviews(this.state.allReviews)}}>Show More!</button>
       </div>

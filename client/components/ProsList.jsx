@@ -1,13 +1,13 @@
 import React from 'react';
-import ProsEntry from 'ProsEntry.jsx';
+import ProsEntry from './ProsEntry.jsx';
 
 const ProsList = (props) => {
   let pros = props.pros;
   return (
     <div>
-      {props.pros.map(pro => {
+      {props.pros.map(pro =>
         <ProsEntry pro={pro} key={pro.proID}/>
-      })}
+      )}
     </div>
   )
 };

@@ -1,13 +1,13 @@
 import React from 'react';
-import ConsEntry from 'ConsEntry.jsx';
+import ConsEntry from './ConsEntry.jsx';
 
 const ConsList = (props) => {
   let cons = props.cons;
   return (
     <div>
-      {props.cons.map(cons => {
+      {props.cons.map(con =>
         <ConsEntry con={con} key={con.conID}/>
-      })}
+      )}
     </div>
   )
 };
