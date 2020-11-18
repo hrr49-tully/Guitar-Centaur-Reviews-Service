@@ -12,6 +12,7 @@ class App extends React.Component {
       pros: [],
       cons: []
     }
+    this.showMoreReviews = this.showMoreReviews.bind(this);
   }
 
   //// use this for a onClick of 'Show More!' reviews ////
@@ -22,21 +23,29 @@ class App extends React.Component {
     this.setState(state => ({
       renderedReviews: totalReviews,
     }))
+  };
+
+  getData(filepath, stateValue) {
+    let url = {};
+    url.filepath = filepath;
+    axios.get(filepath)
+    .then(res => {
+      var newState = {};
+      newState[stateValue] = res.data;
+      this.setState(newState);
+      if (arguments[2]) {
+        arguments[2](res.data);
+      }
+    })
+    .catch(err => {
+      console.error('reviews get request failed: ', err);
+    });
   }
 
   componentDidMount() {
-    axios.get('/guitar/reviews')
-      .then(res => {
-        this.setState(state => ({
-          renderedReviews: res.data.slice(0, 10),
-          allReviews: res.data
-        }))
-        console.log(this.state);
-      })
-      .catch(err => {
-        console.log('reviews get request failed: ', err);
-        throw err;
-      })
+    this.getData('/api/reviews', 'allReviews', this.showMoreReviews);
+    this.getData('/api/pros', 'pros');
+    this.getData('/api/cons', 'cons');
   }
 
   render() {
