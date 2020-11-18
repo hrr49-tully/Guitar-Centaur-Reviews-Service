@@ -6,6 +6,7 @@ const ReviewList = require('../client/components/ReviewsList.jsx').default;
 const React = require('react');
 enzyme.configure({ adapter: new Adapter() });
 
+
 let review = {
   id: 100,
   title: 'Berkshire Hampshire Sleek Granite Shirt',
