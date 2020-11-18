@@ -52,6 +52,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Guitar Reviews</h1>
+        <ProsList />
+        <ConsList />
         <ReviewsList reviews={this.state.renderedReviews}/>
         <button onClick={() => {this.showMoreReviews(this.state.allReviews)}}>Show More!</button>
       </div>
