@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const src = path.join(__dirname, '/client/dist')
 
 module.exports = {
   entry: './client/index.jsx',
@@ -8,7 +9,28 @@ module.exports = {
     path: path.resolve(__dirname, './client/dist')
   },
   module: {
-    rules: [{ test: /\.jsx?/, exclude: /node_modules/, loader: 'babel-loader' }]
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+      }
+    }]
   },
   watch: true,
   node: {

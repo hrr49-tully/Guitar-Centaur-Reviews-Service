@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 import ReviewsList from './components/ReviewsList.jsx';
 import ProsList from './components/ProsList.jsx';
 import ConsList from './components/ConsList.jsx';
+import styles from './components/css/ReviewsStyles.css';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +55,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.body}>
         <h1>Guitar Reviews</h1>
         <ProsList pros={this.state.pros} />
         <br/>
