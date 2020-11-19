@@ -36,11 +36,15 @@
     "webpack-cli": "^4.2.0"
   },
   "devDependencies": {
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "css-loader": "^5.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^26.6.3",
+    "react-css-modules": "^4.7.11",
+    "style-loader": "^2.0.0",
     "supertest": "^6.0.1"
   },
   "jest": {

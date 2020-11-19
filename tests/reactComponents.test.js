@@ -41,8 +41,8 @@ it('renders the name of reviewer in ReviewEntry component', () => {
   expect(wrapper.contains(user)).toEqual(true);
 });
 
-// it('renders Guitar Reviews header in App component', () => {
-//   const wrapper = enzyme.shallow(<App />);
-//   const welcome = <h1>Guitar Reviews</h1>;
-//   expect(wrapper.contains(welcome)).toEqual(true);
-// });
+it('renders Guitar Reviews header in App component', () => {
+  const wrapper = enzyme.shallow(<App />);
+  const welcome = <h1>Guitar Reviews</h1>;
+  expect(wrapper.contains(welcome)).toEqual(true);
+});

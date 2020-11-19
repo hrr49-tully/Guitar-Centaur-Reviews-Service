@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProsEntry = (props) => (
   <div>
-    {props.pro.description}   {props.pro.count}
+    {props.pro.description}  {props.pro.count}
   </div>
 )
 
