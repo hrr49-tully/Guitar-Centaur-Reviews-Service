@@ -23,16 +23,56 @@
 .rv_header {
   display: inline-flex;
   font-size: 1.143em;
+  width: 75%;
 }
 
 .rv_title {
   margin: 0 15px
 }
 
+.stars {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin-left: 1px;
+}
+
+.starsNumber {
+  background: #333;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-left: 4px;
+  padding: 0px 7px;
+}
+
+.contentBlock {
+  line-height: 1.3;
+}
+
+.rightBlock {
+  font-size: 12.8px;
+  padding: 0 10px;
+  width: 200px;
+  position: relative;
+  float: right;
+  padding: 3px 50px 0px 70px;
+}
+
+.date {
+  color: #767676;
+  font-weight: 300;
+}
+
 .rv_content {
   color: #333;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: 300;
+  width: 75%;
+}
+
+.footer {
+  width: 75%;
 }
 
 .rv_thumbs {
@@ -94,18 +134,3 @@
   top: 15px;
 }
 
-.stars {
-  position: relative;
-  width: 15px;
-  height: 15px;
-  margin-left: 1px;
-}
-
-.starsNumber {
-  background: #333;
-  color: white;
-  border-radius: 5px;
-  font-weight: 500;
-  margin-left: 4px;
-  padding: 0px 7px;
-}
