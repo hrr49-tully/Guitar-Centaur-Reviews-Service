@@ -42,7 +42,7 @@ const ReviewEntry = (props) => {
                 {review.upVotes}
               </span>
             </button>
-            <button className={`${styles.thumbsButton} ${styles.thumbsButtonRight}`}  >
+            <button className={`${styles.thumbsButton} ${styles.thumbsButtonRight}`}>
               <span>
                 <svg className={`${styles.vectorThumb} ${styles.vectorThumbDown}` } version="1.1" x="0px" y="0px" viewBox="0 0 216 146" xml:space="preserve" focusable="false" aria-hidden="true">
                   <g>
