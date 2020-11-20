@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
 .body {
   font-family: Helvetica, Arial, sans-serif;
+  color: #333;
   max-width: 1500px;
   width: auto;
   padding: 0 20px;
@@ -7,15 +11,17 @@
 }
 
 .singleReview {
+  font-family: 'montserrat', 'Arial Black', Arial, Helvetica, sans-serif;
+  font-size: 15px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
   padding-bottom: 10px;
   padding-top: 15px;
+  font-weight: bold;
 }
 
 .rv_header {
-  color: #303533;
-
+  font-size: 1.143em;
 }
 
 .rv_content {
@@ -26,9 +32,59 @@
 
 .rv_thumbs {
   display: inline-flex;
+  margin: 0 15px;
+}
 
+.vectorThumb {
+  height: 20px;
+  position: relative;
+}
+
+.vectorThumbDown {
+  transform: rotateX(180deg) scaleX(-1);
+  top: 5px;
+}
+
+.thumbsButton {
+  height: 50px;
+  width: 65px;
+  border: solid;
+  border-radius: 2px;
+  border-width: 1px 1px 2px;
+  border-color: rgb(204, 204, 204);
+  background-color: white;
+}
+
+.thumbsButton:hover {
+  cursor: pointer;
+  background-color: rgb(239, 239, 239);
+}
+
+.thumbsButton:hover > span > svg > g > path {
+  fill: #cd2418;
+}
+
+.thumbsButton:hover > span {
+  color: #cd2418;
+}
+
+.thumbsButtonRight {
+  right: 1px;
+  position: relative;
+}
+
+.thumbsNumber {
+  position: relative;
+  bottom: 4px;
+  font-weight: bold;
+  color: #333;
+}
+
+.rv_recommend {
+  display: inline-flex;
 }
 
 .rv_helpful {
-  display: inline-flex;
+  position: relative;
+  top: 15px;
 }
