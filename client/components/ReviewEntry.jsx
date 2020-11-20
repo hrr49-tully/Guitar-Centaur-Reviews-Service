@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './css/ReviewsStyles.css';
 import thumbs from './css/thumbs.js';
+import Stars from './Stars.jsx';
+import grayStar from './starsImages/grayStar.png';
 
 const ReviewEntry = (props) => {
   let review = props.review;
   return (
     <div className={styles.singleReview}>
       <header className={styles.rv_header}>
-        <div>Stars: {review.stars}</div>
+        <Stars stars={review.stars}/>
+        <div className={styles.starsNumber}>{review.stars}</div>
         <div className={styles.rv_title}>{review.title}</div>
       </header>
       <section>
@@ -20,7 +23,7 @@ const ReviewEntry = (props) => {
         Pros: {review.pros}
         <br/>
         Cons: {review.cons}
-        <p>Experience: {review.experience}</p>
+        <p>Describe Yourself: {review.experience}</p>
       </section>
       <footer>
         <p>Bottom line, {review.wouldRecommend ? 'yes' : 'no'} I would {review.wouldRecommend ? null : 'not'} recommend to a friend</p>

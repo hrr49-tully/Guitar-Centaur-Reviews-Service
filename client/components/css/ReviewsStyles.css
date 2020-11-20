@@ -21,7 +21,12 @@
 }
 
 .rv_header {
+  display: inline-flex;
   font-size: 1.143em;
+}
+
+.rv_title {
+  margin: 0 15px
 }
 
 .rv_content {
@@ -87,4 +92,20 @@
 .rv_helpful {
   position: relative;
   top: 15px;
+}
+
+.stars {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin-left: 1px;
+}
+
+.starsNumber {
+  background: #333;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-left: 4px;
+  padding: 0px 7px;
 }
