@@ -56,7 +56,11 @@
   width: 200px;
   position: relative;
   float: right;
-  padding: 3px 50px 0px 70px;
+  padding: 3px 70px 0px 60px;
+}
+
+.rightBlockLine {
+  padding-bottom: 2px;
 }
 
 .date {
@@ -73,6 +77,7 @@
 
 .footer {
   width: 75%;
+  padding-bottom: 25px;
 }
 
 .rv_thumbs {
@@ -134,3 +139,26 @@
   top: 15px;
 }
 
+/* MORE DETAILS */
+.moreDetailsIcon {
+  transform: rotate(270deg);
+  width: 20px;
+  height: 20px;
+  padding-left: 5px;
+}
+
+.moreDetailsButton {
+  border: 0;
+  display: inline-flex;
+  background-color: white;
+}
+
+.moreDetailsButton:hover {
+  cursor: pointer;
+}
+
+.caret {
+  stroke: #0b7bc1;
+  stroke-width: 4px;
+  fill: none;
+}

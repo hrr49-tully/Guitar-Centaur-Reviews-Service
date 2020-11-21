@@ -5,7 +5,10 @@ import axios from 'axios';
 import ReviewsList from './components/ReviewsList.jsx';
 import ProsList from './components/ProsList.jsx';
 import ConsList from './components/ConsList.jsx';
+import ReviewHistogram from './components/ReviewHistogram.jsx';
+
 import styles from './components/css/ReviewsStyles.css';
+import pcStyles from './components/css//ReviewSnapshot.css';
 
 
 class App extends React.Component {
@@ -57,9 +60,11 @@ class App extends React.Component {
     return (
       <div className={styles.body}>
         <h1>Guitar Reviews</h1>
-        <ProsList pros={this.state.pros} />
-        <br/>
-        <ConsList cons={this.state.cons} />
+        <div className={pcStyles.snp_section} >
+          <ReviewHistogram />
+          <ProsList pros={this.state.pros} />
+          <ConsList cons={this.state.cons} />
+        </div>
         <br/><br/>
         <ReviewsList reviews={this.state.renderedReviews}/>
         <button onClick={() => {this.showMoreReviews(this.state.allReviews)}}>Show More!</button>
