@@ -21,13 +21,63 @@
 }
 
 .rv_header {
+  display: inline-flex;
   font-size: 1.143em;
+  width: 75%;
+}
+
+.rv_title {
+  margin: 0 15px
+}
+
+.stars {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin-left: 1px;
+}
+
+.starsNumber {
+  background: #333;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-left: 4px;
+  padding: 0px 7px;
+}
+
+.contentBlock {
+  line-height: 1.3;
+}
+
+.rightBlock {
+  font-size: 12.8px;
+  padding: 0 10px;
+  width: 200px;
+  position: relative;
+  float: right;
+  padding: 3px 70px 0px 60px;
+}
+
+.rightBlockLine {
+  padding-bottom: 2px;
+}
+
+.date {
+  color: #767676;
+  font-weight: 300;
 }
 
 .rv_content {
   color: #333;
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: 300;
+  width: 75%;
+}
+
+.footer {
+  width: 75%;
+  padding-bottom: 25px;
 }
 
 .rv_thumbs {
@@ -87,4 +137,28 @@
 .rv_helpful {
   position: relative;
   top: 15px;
+}
+
+/* MORE DETAILS */
+.moreDetailsIcon {
+  transform: rotate(270deg);
+  width: 20px;
+  height: 20px;
+  padding-left: 5px;
+}
+
+.moreDetailsButton {
+  border: 0;
+  display: inline-flex;
+  background-color: white;
+}
+
+.moreDetailsButton:hover {
+  cursor: pointer;
+}
+
+.caret {
+  stroke: #0b7bc1;
+  stroke-width: 4px;
+  fill: none;
 }

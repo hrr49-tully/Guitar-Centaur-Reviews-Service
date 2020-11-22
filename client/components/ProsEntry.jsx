@@ -1,8 +1,10 @@
 import React from 'react';
+import styles from './css/ReviewSnapshot.css';
 
 const ProsEntry = (props) => (
-  <div>
-    {props.pro.description}  {props.pro.count}
+  <div className={styles.snp_text} >
+    <span className={styles.snp_number} >{props.pro.count}</span>
+    {props.pro.description}
   </div>
 )
 
