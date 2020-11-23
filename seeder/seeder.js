@@ -133,7 +133,7 @@ for (let i = 0; i < reviews.length; i++) {
 // seeds pros into database
 for (let i = 0; i < prosObjects.length; i++) {
   let pro = prosObjects[i];
-  db.query('insert into pros (proID, description, count) values (?, ?, ?)', [pro.proID, pro.description, pro.count], (err, data) => {
+  db.connection.query('insert into pros (proID, description, count) values (?, ?, ?)', [pro.proID, pro.description, pro.count], (err, data) => {
     if (err) {
       console.error(err);
       throw err;
@@ -146,7 +146,7 @@ for (let i = 0; i < prosObjects.length; i++) {
 // seeds cons into database
 for (let i = 0; i < consObjects.length; i++) {
   let con = consObjects[i];
-  db.query('insert into cons (conID, description, count) values (?, ?, ?)', [con.conID, con.description, con.count], (err, data) => {
+  db.connection.query('insert into cons (conID, description, count) values (?, ?, ?)', [con.conID, con.description, con.count], (err, data) => {
     if (err) {
       console.error(err);
       throw err;
@@ -157,4 +157,4 @@ for (let i = 0; i < consObjects.length; i++) {
 }
 
 
-db.end();
+db.conneciton.end();

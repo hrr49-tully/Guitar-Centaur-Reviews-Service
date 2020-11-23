@@ -46,7 +46,7 @@ class App extends React.Component {
       }
     })
     .catch(err => {
-      console.error('reviews get request failed: ', err);
+      console.error('get request failed: ', err);
     });
   }
 
@@ -59,7 +59,8 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.body}>
-        <h1>Guitar Reviews</h1>
+        <h1>Review Snapshot</h1>
+        <ReviewSummary />
         <div className={pcStyles.snp_section} >
           <ReviewHistogram />
           <ProsList pros={this.state.pros} />
