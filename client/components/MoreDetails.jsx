@@ -20,9 +20,5 @@ const MoreDetails = (props) => {
   )
 }
 
-      // Pros: {review.pros}
-      // <br/>
-      // Cons: {review.cons}
-      // <p>Describe Yourself: {review.experience}</p>
 
 export default MoreDetails;
