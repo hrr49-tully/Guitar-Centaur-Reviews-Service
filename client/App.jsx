@@ -51,16 +51,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData('/api/reviews', 'allReviews', this.showMoreReviews);
-    this.getData('/api/pros', 'pros');
-    this.getData('/api/cons', 'cons');
+    this.getData('/api/reviews/reviews', 'allReviews', this.showMoreReviews);
+    this.getData('/api/reviews/pros', 'pros');
+    this.getData('/api/reviews/cons', 'cons');
   }
 
   render() {
     return (
       <div className={styles.body}>
         <h1>Review Snapshot</h1>
-        <ReviewSummary />
+        {/* <ReviewSummary /> */}
         <div className={pcStyles.snp_section} >
           <ReviewHistogram />
           <ProsList pros={this.state.pros} />

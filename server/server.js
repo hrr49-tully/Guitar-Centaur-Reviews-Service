@@ -11,8 +11,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../client/dist'));
 
 
-app.get('/api/:endpoint', (req, res) => {
-  let table = req.url.split('/')[2];
+app.get('/api/reviews/:endpoint', (req, res) => {
+  let table = req.url.split('/')[3];
   console.log(req.url, table);
   db.query(`select * from ${table}`, (err, data) => {
     if (err) {
