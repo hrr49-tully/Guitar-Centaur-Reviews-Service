@@ -5,7 +5,7 @@ const port  = 3004;
 const url   = `http://${host}:${port}`;
 const user = 'root';
 const database = 'guitarReviews';
-const password = '';
+const password = 'password';
 
 const connection = mysql.createConnection({
   user: user,
