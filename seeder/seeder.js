@@ -157,4 +157,4 @@ for (let i = 0; i < consObjects.length; i++) {
 }
 
 
-db.conneciton.end();
+db.connection.end();
