@@ -6,7 +6,7 @@ import styles from './css/ReviewsStyles.css';
 import thumbs from './css/thumbs.js';
 
 const ReviewEntry = (props) => {
-  let review = props.review;
+  const review = props.review;
   return (
     <div className={styles.singleReview}>
       <header className={styles.rv_header}>
@@ -24,9 +24,9 @@ const ReviewEntry = (props) => {
         </div>
         <p className={styles.rv_content} >{review.contents}</p>
       </section>
-      <MoreDetails pros={review.pros} cons={review.cons} experience={review.experience} />
+      <MoreDetails review={review} />
       <footer className={styles.footer}>
-        <p>Bottom line, {review.wouldRecommend ? 'yes' : 'no'} I would {review.wouldRecommend ? null : 'not'} recommend to a friend</p>
+        <p className={styles.wouldRecommend}>Bottom line, {review.wouldRecommend ? 'yes' : 'no'} I would {review.wouldRecommend ? null : 'not'} recommend to a friend</p>
         <div className={styles.rv_recommend}>
           <div className={styles.rv_helpful}>
             <span>Was this review helpful to you?</span>

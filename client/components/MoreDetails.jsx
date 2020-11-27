@@ -3,21 +3,24 @@ import ExpandDetails from './ExpandDetails.jsx';
 import styles from './css/ReviewsStyles.css';
 
 const MoreDetails = (props) => {
-  const review = props;
+  const review = props.review;
   const [showDetails, setShowDetails] = React.useState(false);
-  const onExpand = () => {
-    setShowDetails(true);
-    console.log(document.getElementsByClassName(styles.moreDetailsIcon)[0]);
-    document.getElementsByClassName(styles.moreDetailsIcon)[0].classList.add(`${styles.moreDetailsIconExpanded}`);
-  };
-  const collapse = () => {
-    setShowDetails(false);
-    document.getElementsByClassName(styles.moreDetailsIcon)[0].classList.remove(`${styles.moreDetailsIconExpanded}`);
+  const index = review.id - 1;
+  let details;
+  showDetails ? details = 'Less Details' : details = 'More Details';
+  const onExpand = (event) => {
+    if (!showDetails) {
+      setShowDetails(true);
+      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.add(`${styles.moreDetailsIconExpanded}`);
+    } else if (showDetails) {
+      setShowDetails(false);
+      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.remove(`${styles.moreDetailsIconExpanded}`);
+    }
   };
   return (
     <section>
-      <button className={styles.moreDetailsButton} onClick={() => {console.log('frick'), onExpand()}}>
-        More Details
+      <button className={styles.moreDetailsButton} onClick={ (event) => onExpand(event) }>
+        {details}
         <span className={styles.moreDetailsIcon}>
           <svg viewBox="-9 -10 52 52" focusable="false" role="presentation">
             <g>
@@ -26,10 +29,7 @@ const MoreDetails = (props) => {
           </svg>
         </span>
       </button>
-      { showDetails ? <ExpandDetails
-      onExpand={onExpand}
-      collapse={collapse}
-      review={review} /> : null }
+      { showDetails ? <ExpandDetails review={review} /> : null }
     </section>
   )
 }
