@@ -151,6 +151,7 @@
   border: 0;
   display: inline-flex;
   background-color: white;
+  outline: none;
 }
 
 .moreDetailsButton:hover {
@@ -161,4 +162,9 @@
   stroke: #0b7bc1;
   stroke-width: 4px;
   fill: none;
+}
+
+.moreDetailsIconExpanded {
+  transform: rotate(90deg);
+  margin-top: -5px;
 }

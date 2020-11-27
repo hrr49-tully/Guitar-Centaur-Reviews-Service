@@ -8,24 +8,24 @@ let prosObjects = [];
 let consObjects = [];
 
 // arrays to handle number of times a pro/con has been selected
-let pros = ['Fun To Play', 'Good Feel', 'Good Tone', 'Good Pick Up', 'Solid Electronics', 'Visuals'];
-let prosCount = [0, 0, 0, 0, 0, 0];
-let cons = ['Flat Sound', 'Fret Buzz', 'Poor Pick Up', 'Poor Quality Craftsmanship'];
-let consCount = [0, 0, 0, 0];
+let pros = ['Fun To Play', 'Good Feel', 'Good Tone', 'Good Pick Up', 'Solid Electronics'];
+let prosCount = [0, 0, 0, 0, 0];
+let cons = ['Flat Sound', 'Fret Buzz', 'Poor Pick Up', 'Poor Quality Craftsmanship', 'Poor Electronics'];
+let consCount = [0, 0, 0, 0, 0];
 
 
 for (let i = 0; i < 100; i++) {
 
   // arrays to grab pros/cons/experience level from
-  let prosArr = ['Fun To Play', 'Good Feel', 'Good Tone', 'Good Pick Up', 'Solid Electronics', 'Visuals'];
-  let consArr = ['Flat Sound', 'Fret Buzz', 'Poor Pick Up', 'Poor Quality Craftsmanship'];
+  let prosArr = ['Fun To Play', 'Good Feel', 'Good Tone', 'Good Pick Up', 'Solid Electronics'];
+  let consArr = ['Flat Sound', 'Fret Buzz', 'Poor Pick Up', 'Poor Quality Craftsmanship', 'Poor Electronics'];
   let experienceArr = ['Kook', 'Novice', 'Experienced', 'Rockstar'];
 
   // experience variable to use in review below
   let randomExperience = experienceArr[Math.round(Math.random() * 3)]
 
   // random number for how many pros/cons to list
-  let numberOfPros = Math.ceil(Math.random() * 6);
+  let numberOfPros = Math.ceil(Math.random() * 5);
   let numberOfCons = Math.ceil(Math.random() * 2);
 
   // arrays to push pros/cons into for current review

@@ -1,0 +1,1 @@
+ssh -i '/Users/mitchmcdermott/Desktop/Guitar-Centaur-Reviews-Service/guitar-centaur.pem' ubuntu@ec2-18-219-89-193.us-east-2.compute.amazonaws.com

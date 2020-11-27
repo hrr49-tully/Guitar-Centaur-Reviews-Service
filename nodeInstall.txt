@@ -1,0 +1,11 @@
+### INSTALL NODE ###
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+### ACTIVATE NVM ###
+. ~/.nvm/nvm.sh
+
+### USE NVM TO INSTALL NODE (FOLLOWED BY VERSION) ###
+nvm install node 13
+
+### CONSOLE LOG NODE VERSION ###
+node -e "console.log('Running Node.js ' + process.version)"
