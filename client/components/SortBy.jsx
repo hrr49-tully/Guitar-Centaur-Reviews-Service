@@ -62,7 +62,6 @@ const SortBy = (props) => {
     for (let i = start; i > -1; i--) {
       allReviews.push(props.allReviews[reviewIds[i] - 1]);
     }
-    console.log(allReviews)
     props.changeRendered(allReviews);
   }
 

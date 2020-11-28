@@ -59,5 +59,3 @@ const Recommended = (props) => {
 
 
 export default Recommended;
-
-

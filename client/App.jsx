@@ -37,7 +37,6 @@ class App extends React.Component {
   };
 
   changeRendered(input) {
-    console.log('input', input, 'state', this.state.allReviews)
     this.setState({
       allReviews: input
     });
