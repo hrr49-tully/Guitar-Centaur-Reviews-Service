@@ -23,6 +23,7 @@ class App extends React.Component {
       cons: []
     }
     this.showMoreReviews = this.showMoreReviews.bind(this);
+    this.changeRendered = this.changeRendered.bind(this);
   }
 
   //// use this for a onClick of 'Show More!' reviews ////
@@ -30,10 +31,18 @@ class App extends React.Component {
     let startIndex = this.state.renderedReviews.length;
     let tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
     let totalReviews = this.state.renderedReviews.concat(tenMore);
-    this.setState(state => ({
+    this.setState({
       renderedReviews: totalReviews,
-    }))
+    });
   };
+
+  changeRendered(input) {
+    console.log(input, this.state)
+    this.setState({
+      allReviews: input
+    });
+  };
+
 
   getData(filepath, stateValue) {
     let url = {};
@@ -68,8 +77,7 @@ class App extends React.Component {
           <ProsList pros={this.state.pros} />
           <ConsList cons={this.state.cons} />
         </div>
-        <br/><br/>
-        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} />
+        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} changeRendered={this.changeRendered} />
         <ReviewsList reviews={this.state.renderedReviews} />
         <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
       </div>
