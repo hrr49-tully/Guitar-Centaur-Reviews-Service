@@ -103,6 +103,19 @@
   border-width: 1px 1px 2px;
   border-color: rgb(204, 204, 204);
   background-color: white;
+  outline: none;
+}
+
+.thumbsOppositeClicked {
+  height: 50px;
+  width: 65px;
+  border: solid;
+  border-radius: 2px;
+  border-width: 1px 1px 2px;
+  border-color: rgb(204, 204, 204);
+  background-color: white;
+  outline: none;
+  opacity: 40%;
 }
 
 .thumbsButton:hover {
@@ -116,6 +129,36 @@
 
 .thumbsButton:hover > span {
   color: #cd2418;
+}
+
+.thumbsButtonClicked {
+  background-color: red;
+  opacity: 40%;
+}
+
+.thumbsButtonClicked:hover {
+  background-color: red;
+  cursor: default;
+}
+
+.thumbsButtonClicked:hover > span {
+  color: white;
+}
+
+.thumbsButtonClicked:hover > span > svg > g > path {
+  fill: white;
+}
+
+.thumbsButtonClickedNumber {
+  color: white;
+}
+
+.thumbsButtonClicked > span {
+  color: white;
+}
+
+.thumbsButtonClicked > span > svg > g > path {
+  fill: white;
 }
 
 .thumbsButtonRight {
@@ -189,7 +232,7 @@
 }
 
 .moreDetailsPCHeader {
-  background-color: #f6f6f6;
+  background-color: #ededed;
   padding: 10px;
 }
 

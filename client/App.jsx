@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import ReviewsList from './components/ReviewsList.jsx';
+import ReviewSummary from './components/ReviewSummary.jsx';
 import ProsList from './components/ProsList.jsx';
 import ConsList from './components/ConsList.jsx';
 import ReviewHistogram from './components/ReviewHistogram.jsx';
+import SortBy from './components/SortBy.jsx';
+import ReviewsList from './components/ReviewsList.jsx';
 
 import styles from './components/css/ReviewsStyles.css';
 import pcStyles from './components/css//ReviewSnapshot.css';
@@ -60,15 +62,16 @@ class App extends React.Component {
     return (
       <div className={styles.body}>
         <h1>Review Snapshot</h1>
-        {/* <ReviewSummary /> */}
+        <ReviewSummary />
         <div className={pcStyles.snp_section} >
           <ReviewHistogram />
           <ProsList pros={this.state.pros} />
           <ConsList cons={this.state.cons} />
         </div>
         <br/><br/>
-        <ReviewsList reviews={this.state.renderedReviews}/>
-        <button onClick={() => {this.showMoreReviews(this.state.allReviews)}}>Show More!</button>
+        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} />
+        <ReviewsList reviews={this.state.renderedReviews} />
+        <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
       </div>
     )
   }

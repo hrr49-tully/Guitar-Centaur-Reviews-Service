@@ -11,10 +11,10 @@ const MoreDetails = (props) => {
   const onExpand = (event) => {
     if (!showDetails) {
       setShowDetails(true);
-      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.add(`${styles.moreDetailsIconExpanded}`);
+      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.add(styles.moreDetailsIconExpanded);
     } else if (showDetails) {
       setShowDetails(false);
-      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.remove(`${styles.moreDetailsIconExpanded}`);
+      document.getElementsByClassName(styles.moreDetailsIcon)[index].classList.remove(styles.moreDetailsIconExpanded);
     }
   };
   return (
