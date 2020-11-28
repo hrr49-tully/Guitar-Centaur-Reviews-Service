@@ -57,14 +57,16 @@ const SortBy = (props) => {
         }
       }
     }
-    console.log(reviewIds);
-    for (var i = 0; i <reviewIds.length; i++) {
-      allReviews.push(props.allReviews[reviewIds[i]-1]);
+
+    const start = reviewIds.length - 1;
+    for (let i = start; i > -1; i--) {
+      allReviews.push(props.allReviews[reviewIds[i] - 1]);
     }
+    console.log(allReviews)
     props.changeRendered(allReviews);
   }
 
-  if (props.allReviews.length) {
+  if (props.allReviews.length && props.allReviews[0].id === 1) {
     sortByOldest(props.allReviews);
   }
     // if (input === options[0]) {
