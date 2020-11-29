@@ -47,16 +47,18 @@ class App extends React.Component {
     });
   };
 
-  sortByStars(stars) {
-    axios.get(`api/reviews/reviews/${stars}`)
+  sortByStars(endpoint) {
+    if (arguments[1]) {
+      axios.get(`api/reviews/stars/${endpoint}`)
       .then(res => {
         this.setState({
           currentSort: res.data
         });
       })
       .catch(err => {
-        console.error('get stars failed: ', err);
+        console.error(`get ${endpoint} stars failed: `, err);
       });
+    }
   }
 
   getData(filepath, stateValue) {
@@ -92,7 +94,7 @@ class App extends React.Component {
           <ProsList pros={this.state.pros} />
           <ConsList cons={this.state.cons} />
         </div>
-        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} />
+        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars}/>
         <ReviewsList reviews={this.state.currentSort} />
         <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
       </div>

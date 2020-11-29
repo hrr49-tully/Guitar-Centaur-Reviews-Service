@@ -24,6 +24,32 @@ app.get('/api/reviews/:endpoint', (req, res) => {
   });
 });
 
+app.get('/api/reviews/stars/:endpoint', (req, res) => {
+  console.log(req.url);
+  const endpoint = req.url.split('/')[4];
+  if (endpoint.length > 1) {
+    console.log('WE OUTCHYEA STARS ORDER');
+    db.query(`select * from reviews order by stars ${endpoint}`, (err, data) => {
+      if (err) {
+        console.error(`reviews by stars ${endpoint} failed: `, err);
+      } else {
+        console.log(`reviews by stars ${endpoint} successful`);
+        res.send(JSON.stringify(data));
+      };
+    });
+  } else {
+    console.log('WE OUTCHYEA STARS NUMBERS');
+    db.query(`select * from reviews where stars=${endpoint}`, (err, data) => {
+      if (err) {
+        console.error(`reviews with ${endpoint} query failed: `, err);
+      } else {
+        console.log(`reviews with ${endpoint} query successful`);
+        res.send(JSON.stringify(data));
+      };
+    });
+  };
+});
+
 app.post('/guitar/reviews', (req, res) => {
   db.query('insert into reviews (title, contents, stars, user, experience, dateSubmitted, location, upVotes, downVotes, pros, cons, wouldRecommend) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.body.title, req.body.contents, req.body.stars, req.body.user, req.body.experience, req.body.dateSubmitted, req.body.location, req.body.upVotes, req.body.downVotes, req.body.pros, req.body.cons, req.body.wouldRecommend], (err, data) => {
     if (err) {
