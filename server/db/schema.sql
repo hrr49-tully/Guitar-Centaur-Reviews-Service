@@ -11,7 +11,7 @@ CREATE TABLE reviews (
   user varchar(30),
   experience varchar(20),
   dateSubmitted varchar(50),
-  location varchar(35),
+  location varchar(50),
   upVotes int(3) not null default 0,
   downVotes int(3) not null default 0,
   pros varchar(90),
