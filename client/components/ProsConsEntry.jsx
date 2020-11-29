@@ -12,8 +12,8 @@ const ConsEntry = (props) => (
       </g>
     </svg>
   </div>
-  <span className={styles.snp_number}>{props.con.count}</span>
-  {props.con.description}
+  <span className={styles.snp_number}>{props.pc.count}</span>
+  {props.pc.description}
   </div>
 )
 

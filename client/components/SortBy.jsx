@@ -2,31 +2,32 @@ import React from 'react';
 import styles from './css/SortByStyles.css';
 
 const SortBy = (props) => {
-  const [sortOption, setSortOption] = React.useState('Most Recent');
   const [sortedNewest, setSortedNewest] = React.useState(false);
   const [sortedOldest, setSortedOldest] = React.useState(false);
-  const switchSort = (input) => {
-    setShowOptions(input);
-  };
+  const [randomNum, setRandomNum] = React.useState(null);
   const options = ['Most Recent', 'Oldest', 'Most Helpful', 'Highest Rated', 'Lowest Rated'];
+  const reviews = props.reviews;
 
-  const convertMonthToNum = (input) => {
-    let result = input === 'Jan' ? 1 :
-    input === 'Feb' ? 2 :
-    input === 'Mar' ? 3 :
-    input === 'Apr' ? 4 :
-    input === 'May' ? 5 :
-    input === 'Jun' ? 6 :
-    input === 'Jul' ? 7 :
-    input === 'Aug' ? 8 :
-    input === 'Sep' ? 9 :
-    input === 'Oct' ? 10 :
-    input === 'Nov' ? 11 :
-    input === 'Dec' ? 12 : null;
+  const sortByCategory = () => {
+
+  }
+  const convertMonthToNum = (month) => {
+    let result = month === 'Jan' ? 1 :
+    month === 'Feb' ? 2 :
+    month === 'Mar' ? 3 :
+    month === 'Apr' ? 4 :
+    month === 'May' ? 5 :
+    month === 'Jun' ? 6 :
+    month === 'Jul' ? 7 :
+    month === 'Aug' ? 8 :
+    month === 'Sep' ? 9 :
+    month === 'Oct' ? 10 :
+    month === 'Nov' ? 11 :
+    month === 'Dec' ? 12 : null;
     return result;
   }
 
-  const sortByNewest = (input) => {
+  const sortByNewest = () => {
     if (sortedNewest) {
       props.changeRendered(sortedNewest);
       return;
@@ -34,7 +35,7 @@ const SortBy = (props) => {
     let reviewIds = [];
     let allReviews = [];
     let sortDates = {};
-    props.allReviews.forEach(review => {
+    reviews.forEach(review => {
       const currentDay = review.dateSubmitted.split(/[ ,]+/)[1];
       const currentMonth = convertMonthToNum(review.dateSubmitted.split(/[ ,]+/)[0]);
       const currentYear = review.dateSubmitted.split(/[ ,]+/)[2];
@@ -65,10 +66,15 @@ const SortBy = (props) => {
 
     const start = reviewIds.length - 1;
     for (let i = start; i > -1; i--) {
-      allReviews.push(props.allReviews[reviewIds[i] - 1]);
+      allReviews.push(reviews[reviewIds[i] - 1]);
     }
     props.changeRendered(allReviews);
     !sortedNewest.length ? setSortedNewest(allReviews) : null;
+  }
+
+  const getRandomNum = () =>  {
+    let number = Math.floor(Math.random() * 30) + 62;
+    setRandomNum(number);
   }
 
   const sortByOldest = (reviews) => {
@@ -83,23 +89,24 @@ const SortBy = (props) => {
     props.changeRendered(reversed);
   }
 
-  const changeRendered = (input) => {
-    input === options[0] ? sortByNewest(props.allReviews) :
-    input === options[1] ? sortByOldest(sortedNewest) :
-    input === options[2] ? props.sortByUpVotes() :
-    input === options[3] ? props.sortByStars('desc') :
-    input === options[4] ? props.sortByStars('asc') :
+  const changeRendered = (selectedOption) => {
+    selectedOption === options[0] ? sortByNewest(reviews) :
+    selectedOption === options[1] ? sortByOldest(sortedNewest) :
+    selectedOption === options[2] ? props.sortByUpVotes() :
+    selectedOption === options[3] ? props.sortByStars('desc') :
+    selectedOption === options[4] ? props.sortByStars('asc') :
     null;
   }
 
-  props.allReviews.length && props.allReviews[0].id === 1 ? sortByNewest(props.allReviews) : null;
+  reviews.length && reviews[0].id === 1 ? sortByNewest() : null;
+
+  !randomNum ? getRandomNum() : null;
 
   return (
     <div className={styles.sortBySection}>
-      <span>Reviewed by {props.allReviews.length} customers</span>
+      <span>Reviewed by {randomNum} customers</span>
       <select className={styles.sortByMenu} onChange={(event) => {
         changeRendered(event.target.value);
-        setSortOption(event.target.value);
       }}>
         <optgroup label="Sort Reviews By:">
           <option>Most Recent</option>

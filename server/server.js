@@ -51,7 +51,7 @@ app.get('/api/reviews/sort/upVotes', (req, res) => {
     if (err) {
       console.error('reviews sorted by upVotes query failed: ', err)
     } else {
-      console.log('reviews sorted by upVotes query successfull');
+      console.log('reviews sorted by upVotes query successful');
       res.send(JSON.stringify(data));
     };
   });
