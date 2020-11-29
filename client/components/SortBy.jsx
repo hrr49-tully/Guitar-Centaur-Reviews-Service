@@ -3,10 +3,11 @@ import styles from './css/SortByStyles.css';
 
 const SortBy = (props) => {
   const [sortOption, setSortOption] = React.useState('Most Recent');
+  const [sortedByDate, setSortedByDate] = React.useState(false);
   const switchSort = (input) => {
     setShowOptions(input);
   };
-  const options = ['Most Recent', 'Most Helpful', 'Highest Rated', 'Lowest Rated', 'Oldest'];
+  const options = ['Most Recent', 'Oldest', 'Most Helpful', 'Highest Rated', 'Lowest Rated'];
 
   const convertMonthToNum = (input) => {
     let result = input === 'Jan' ? 1 :
@@ -24,7 +25,11 @@ const SortBy = (props) => {
     return result;
   }
 
-  const sortByOldest = (input) => {
+  const sortByNewest = (input) => {
+    if (sortedByDate) {
+      props.changeRendered(sortedByDate);
+      return;
+    }
     let reviewIds = [];
     let allReviews = [];
     let sortDates = {};
@@ -35,7 +40,6 @@ const SortBy = (props) => {
       if (sortDates) {
         if (sortDates[currentYear]) {
           if (sortDates[currentYear][currentMonth]) {
-            console.log(sortDates);
             sortDates[currentYear][currentMonth][currentDay] = review.id;
           } else {
             let day = {};
@@ -63,10 +67,21 @@ const SortBy = (props) => {
       allReviews.push(props.allReviews[reviewIds[i] - 1]);
     }
     props.changeRendered(allReviews);
+    !sortedByDate.length ? setSortedByDate(allReviews) : null;
   }
 
-  if (props.allReviews.length && props.allReviews[0].id === 1) {
-    sortByOldest(props.allReviews);
+  const sortByOldest = (reviews) => {
+    let reversed = [];
+    for (let i = reviews.length - 1; i > -1; i--) {
+      reversed.push(reviews[i]);
+    }
+    props.changeRendered(reversed);
+  }
+
+  const changeRendered = (input) => {
+    input === options[0] ? sortByNewest(props.allReviews) :
+    input === options[1] ? sortByOldest(sortedByDate) :
+    null;
   }
     // if (input === options[0]) {
 
@@ -88,13 +103,14 @@ const SortBy = (props) => {
   //   let reviews = [];
 
   // }
+  props.allReviews.length && props.allReviews[0].id === 1 ? sortByNewest(props.allReviews) : null;
 
   return (
     <div className={styles.sortBySection}>
       <span>Reviewed by {props.allReviews.length} customers</span>
       <select className={styles.sortByMenu} onChange={(event) => {
+        changeRendered(event.target.value);
         setSortOption(event.target.value);
-        changeRendered(props.renderedReviews);
       }}>
         <optgroup label="Sort Reviews By:">
           <option>Most Recent</option>

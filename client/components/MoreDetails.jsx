@@ -10,7 +10,6 @@ const MoreDetails = (props) => {
   const onExpand = (event) => {
     if (!showDetails) {
       setShowDetails(true);
-      console.log(document.getElementsByClassName(review.id))
       document.getElementsByClassName(review.id)[0].classList.add(styles.moreDetailsIconExpanded);
     } else if (showDetails) {
       setShowDetails(false);
