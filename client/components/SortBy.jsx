@@ -4,7 +4,6 @@ import styles from './css/SortByStyles.css';
 const SortBy = (props) => {
   const [sortedNewest, setSortedNewest] = React.useState(false);
   const [sortedOldest, setSortedOldest] = React.useState(false);
-  const [randomNum, setRandomNum] = React.useState(null);
   const options = ['Most Recent', 'Oldest', 'Most Helpful', 'Highest Rated', 'Lowest Rated'];
   const reviews = props.reviews;
 
@@ -72,11 +71,6 @@ const SortBy = (props) => {
     !sortedNewest.length ? setSortedNewest(allReviews) : null;
   }
 
-  const getRandomNum = () =>  {
-    let number = Math.floor(Math.random() * 30) + 62;
-    setRandomNum(number);
-  }
-
   const sortByOldest = (reviews) => {
     if (sortedOldest) {
       props.changeRendered(sortedOldest);
@@ -100,11 +94,9 @@ const SortBy = (props) => {
 
   reviews.length && reviews[0].id === 1 ? sortByNewest() : null;
 
-  !randomNum ? getRandomNum() : null;
-
   return (
     <div className={styles.sortBySection}>
-      <span>Reviewed by {randomNum} customers</span>
+      <span>Reviewed by {props.number} customers</span>
       <select className={styles.sortByMenu} onChange={(event) => {
         changeRendered(event.target.value);
       }}>

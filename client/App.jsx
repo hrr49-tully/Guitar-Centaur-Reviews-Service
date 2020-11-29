@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ReviewSummary from './components/ReviewSummary.jsx';
 import ProsConsList from './components/ProsConsList.jsx';
-import ReviewHistogram from './components/ReviewHistogram.jsx';
+import Histogram from './components/Histogram.jsx';
 import SortBy from './components/SortBy.jsx';
 import ReviewsList from './components/ReviewsList.jsx';
 
@@ -15,6 +15,7 @@ import pcStyles from './components/css//ReviewSnapshot.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       renderedReviews: [],
       // reviews: [],
@@ -22,6 +23,7 @@ class App extends React.Component {
       currentSort: [],
       pros: [],
       cons: [],
+      number: Math.floor(Math.random() * 30) + 62,
     }
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.changeRendered = this.changeRendered.bind(this);
@@ -31,7 +33,6 @@ class App extends React.Component {
 
   //// use this for a onClick of 'Show More!' reviews ////
   showMoreReviews(reviews) {
-    console.log(this.state);
     let startIndex = this.state.renderedReviews.length;
     let tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
     let totalReviews = this.state.renderedReviews.concat(tenMore);
@@ -95,6 +96,7 @@ class App extends React.Component {
     });
   };
 
+
   getData(filepath, stateValue) {
     let url = {};
     url.filepath = filepath;
@@ -121,11 +123,11 @@ class App extends React.Component {
         <h1>Review Snapshot</h1>
         <ReviewSummary />
         <div className={pcStyles.snp_section} >
-          <ReviewHistogram sortByStars={this.sortByStars} />
+          <Histogram sortByStars={this.sortByStars} />
           <ProsConsList prosCons={this.state.pros} />
           <ProsConsList prosCons={this.state.cons} />
         </div>
-        <SortBy renderedReviews={this.state.renderedReviews} reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} />
+        <SortBy renderedReviews={this.state.renderedReviews} reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
         <ReviewsList reviews={this.state.currentSort} />
         <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
       </div>
