@@ -3,7 +3,8 @@ import styles from './css/SortByStyles.css';
 
 const SortBy = (props) => {
   const [sortOption, setSortOption] = React.useState('Most Recent');
-  const [sortedByDate, setSortedByDate] = React.useState(false);
+  const [sortedNewest, setSortedNewest] = React.useState(false);
+  const [sortedOldest, setSortedOldest] = React.useState(false);
   const switchSort = (input) => {
     setShowOptions(input);
   };
@@ -26,8 +27,8 @@ const SortBy = (props) => {
   }
 
   const sortByNewest = (input) => {
-    if (sortedByDate) {
-      props.changeRendered(sortedByDate);
+    if (sortedNewest) {
+      props.changeRendered(sortedNewest);
       return;
     }
     let reviewIds = [];
@@ -67,10 +68,14 @@ const SortBy = (props) => {
       allReviews.push(props.allReviews[reviewIds[i] - 1]);
     }
     props.changeRendered(allReviews);
-    !sortedByDate.length ? setSortedByDate(allReviews) : null;
+    !sortedNewest.length ? setSortedNewest(allReviews) : null;
   }
 
   const sortByOldest = (reviews) => {
+    if (sortedOldest) {
+      props.changeRendered(sortedOldest);
+      return;
+    }
     let reversed = [];
     for (let i = reviews.length - 1; i > -1; i--) {
       reversed.push(reviews[i]);
@@ -80,7 +85,7 @@ const SortBy = (props) => {
 
   const changeRendered = (input) => {
     input === options[0] ? sortByNewest(props.allReviews) :
-    input === options[1] ? sortByOldest(sortedByDate) :
+    input === options[1] ? sortByOldest(sortedNewest) :
     null;
   }
     // if (input === options[0]) {
