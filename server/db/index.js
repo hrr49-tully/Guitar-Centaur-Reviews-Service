@@ -10,7 +10,7 @@ const password = 'password';
 const connection = mysql.createConnection({
   user: user,
   database: database,
-  password: '',
+  password: 'password',
 });
 
 module.exports = {
