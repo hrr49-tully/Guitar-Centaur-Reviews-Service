@@ -31,28 +31,45 @@ class App extends React.Component {
 
   //// use this for a onClick of 'Show More!' reviews ////
   showMoreReviews(reviews) {
+    console.log(this.state);
     let startIndex = this.state.renderedReviews.length;
     let tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
     let totalReviews = this.state.renderedReviews.concat(tenMore);
     this.setState({
+      currentSort: totalReviews,
       renderedReviews: totalReviews,
     });
   };
 
   changeRendered(input) {
+    if (!this.state.reviews.length) {
+      this.setState({
+        reviews: this.state.allReviews
+      });
+    };
     this.setState({
-      reviews: this.state.allReviews,
+      renderedReviews: [],
       allReviews: input,
       currentSort: input
     });
+    this.showMoreReviews();
   };
 
   sortByStars(endpoint) {
     axios.get(`api/reviews/stars/${endpoint}`)
     .then(res => {
-      this.setState({
-        currentSort: res.data
-      });
+      if (res.data.length === 100) {
+        this.setState({
+          allReviews: res.data,
+          currentSort: res.data,
+          renderedReviews: []
+        });
+        this.showMoreReviews();
+      } else {
+        this.setState({
+          currentSort: res.data
+        });
+      };
     })
     .catch(err => {
       console.error(`get ${endpoint} stars failed: `, err);
@@ -68,9 +85,6 @@ class App extends React.Component {
       var newState = {};
       newState[stateValue] = res.data;
       this.setState(newState);
-      if (arguments[2]) {
-        arguments[2](res.data);
-      };
     })
     .catch(err => {
       console.error('get request failed: ', err);
@@ -78,7 +92,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData('/api/reviews/reviews', 'allReviews', this.showMoreReviews);
+    this.getData('/api/reviews/reviews', 'allReviews');
     this.getData('/api/reviews/pros', 'pros');
     this.getData('/api/reviews/cons', 'cons');
   }
