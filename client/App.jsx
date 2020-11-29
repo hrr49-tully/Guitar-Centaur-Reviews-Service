@@ -49,11 +49,11 @@ class App extends React.Component {
       });
     };
     this.setState({
-      renderedReviews: [],
+      renderedReviews: input.slice(0, 10),
       allReviews: input,
-      currentSort: input
+      currentSort: input.slice(0, 10)
     });
-    this.showMoreReviews();
+    // this.showMoreReviews();
   };
 
   sortByStars(endpoint) {
