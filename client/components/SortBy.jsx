@@ -86,28 +86,12 @@ const SortBy = (props) => {
   const changeRendered = (input) => {
     input === options[0] ? sortByNewest(props.allReviews) :
     input === options[1] ? sortByOldest(sortedNewest) :
+    input === options[2] ? console.log('Ya gotta fix this one fam') :
+    input === options[3] ? props.sortByStars('desc') :
+    input === options[4] ? props.sortByStars('asc') :
     null;
   }
-    // if (input === options[0]) {
 
-    // };
-    // if (input === options[1]) {
-
-    // };
-    // if (input === options[2]) {
-
-    // };
-    // if (input === options[3]) {
-
-    // };
-    // if (input === options[4]) {
-
-    // };
-  // const changeRendered = (input) => {
-  //   let allReviews = props.allReviews;
-  //   let reviews = [];
-
-  // }
   props.allReviews.length && props.allReviews[0].id === 1 ? sortByNewest(props.allReviews) : null;
 
   return (

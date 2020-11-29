@@ -48,18 +48,17 @@ class App extends React.Component {
   };
 
   sortByStars(endpoint) {
-    if (arguments[1]) {
-      axios.get(`api/reviews/stars/${endpoint}`)
-      .then(res => {
-        this.setState({
-          currentSort: res.data
-        });
-      })
-      .catch(err => {
-        console.error(`get ${endpoint} stars failed: `, err);
+    axios.get(`api/reviews/stars/${endpoint}`)
+    .then(res => {
+      this.setState({
+        currentSort: res.data
       });
-    }
+    })
+    .catch(err => {
+      console.error(`get ${endpoint} stars failed: `, err);
+    });
   }
+
 
   getData(filepath, stateValue) {
     let url = {};

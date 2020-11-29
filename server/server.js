@@ -13,7 +13,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/api/reviews/:endpoint', (req, res) => {
   let table = req.url.split('/')[3];
-  console.log(req.url, table);
   db.query(`select * from ${table}`, (err, data) => {
     if (err) {
       console.error(`${table} query failed: `, err);
@@ -25,10 +24,8 @@ app.get('/api/reviews/:endpoint', (req, res) => {
 });
 
 app.get('/api/reviews/stars/:endpoint', (req, res) => {
-  console.log(req.url);
   const endpoint = req.url.split('/')[4];
   if (endpoint.length > 1) {
-    console.log('WE OUTCHYEA STARS ORDER');
     db.query(`select * from reviews order by stars ${endpoint}`, (err, data) => {
       if (err) {
         console.error(`reviews by stars ${endpoint} failed: `, err);
@@ -38,7 +35,6 @@ app.get('/api/reviews/stars/:endpoint', (req, res) => {
       };
     });
   } else {
-    console.log('WE OUTCHYEA STARS NUMBERS');
     db.query(`select * from reviews where stars=${endpoint}`, (err, data) => {
       if (err) {
         console.error(`reviews with ${endpoint} query failed: `, err);
