@@ -86,7 +86,7 @@ const SortBy = (props) => {
   const changeRendered = (input) => {
     input === options[0] ? sortByNewest(props.allReviews) :
     input === options[1] ? sortByOldest(sortedNewest) :
-    input === options[2] ? console.log('Ya gotta fix this one fam') :
+    input === options[2] ? props.sortByUpVotes() :
     input === options[3] ? props.sortByStars('desc') :
     input === options[4] ? props.sortByStars('asc') :
     null;

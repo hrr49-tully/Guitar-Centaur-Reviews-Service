@@ -26,6 +26,7 @@ class App extends React.Component {
     }
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.changeRendered = this.changeRendered.bind(this);
+    this.sortByUpVotes = this.sortByUpVotes.bind(this);
     this.sortByStars = this.sortByStars.bind(this);
   }
 
@@ -74,8 +75,22 @@ class App extends React.Component {
     .catch(err => {
       console.error(`get ${endpoint} stars failed: `, err);
     });
-  }
+  };
 
+  sortByUpVotes() {
+    axios.get('api/reviews/sort/upVotes')
+    .then(res => {
+      this.setState({
+        allReviews: res.data,
+        currentSort: res.data,
+        renderedReviews: []
+      });
+      this.showMoreReviews();
+    })
+    .catch(err => {
+      console.error('sort by upVotes failed: ', err);
+    });
+  };
 
   getData(filepath, stateValue) {
     let url = {};
@@ -107,7 +122,7 @@ class App extends React.Component {
           <ProsList pros={this.state.pros} />
           <ConsList cons={this.state.cons} />
         </div>
-        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars}/>
+        <SortBy renderedReviews={this.state.renderedReviews} allReviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} />
         <ReviewsList reviews={this.state.currentSort} />
         <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
       </div>

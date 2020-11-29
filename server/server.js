@@ -46,16 +46,16 @@ app.get('/api/reviews/stars/:endpoint', (req, res) => {
   };
 });
 
-app.post('/guitar/reviews', (req, res) => {
-  db.query('insert into reviews (title, contents, stars, user, experience, dateSubmitted, location, upVotes, downVotes, pros, cons, wouldRecommend) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [req.body.title, req.body.contents, req.body.stars, req.body.user, req.body.experience, req.body.dateSubmitted, req.body.location, req.body.upVotes, req.body.downVotes, req.body.pros, req.body.cons, req.body.wouldRecommend], (err, data) => {
+app.get('/api/reviews/sort/upVotes', (req, res) => {
+  db.query(`select * from reviews order by upVotes desc`, (err, data) => {
     if (err) {
-      console.error(err);
+      console.error('reviews sorted by upVotes query failed: ', err)
     } else {
-      console.log('post successful');
-      res.send(data);
-    }
-  })
-})
+      console.log('reviews sorted by upVotes query successfull');
+      res.send(JSON.stringify(data));
+    };
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
