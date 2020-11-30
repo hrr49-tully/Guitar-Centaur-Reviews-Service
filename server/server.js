@@ -37,9 +37,9 @@ app.get('/api/reviews/stars/:endpoint', (req, res) => {
   } else {
     db.query(`select * from reviews where stars=${endpoint}`, (err, data) => {
       if (err) {
-        console.error(`reviews with ${endpoint} query failed: `, err);
+        console.error(`reviews with ${endpoint} stars query failed: `, err);
       } else {
-        console.log(`reviews with ${endpoint} query successful`);
+        console.log(`reviews with ${endpoint} stars query successful`);
         res.send(JSON.stringify(data));
       };
     });

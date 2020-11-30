@@ -43,7 +43,6 @@ class App extends React.Component {
   };
 
   changeRendered(input) {
-    let allReviews = this.state.allReviews;
     // if (!this.state.reviews.length) {
     //   this.setState({
     //     reviews: this.state.allReviews
@@ -63,7 +62,7 @@ class App extends React.Component {
   sortByStars(endpoint) {
     axios.get(`api/reviews/stars/${endpoint}`)
     .then(res => {
-      if (res.data.length === 100) {
+      if (res.data.length < this.state.allReviews.length) {
         this.setState({
           allReviews: res.data,
           currentSort: res.data,
@@ -123,7 +122,7 @@ class App extends React.Component {
         <h1>Review Snapshot</h1>
         <ReviewSummary />
         <div className={pcStyles.snp_section} >
-          <Histogram sortByStars={this.sortByStars} />
+          <Histogram sortByStars={this.sortByStars} number={this.state.number}/>
           <ProsConsList prosCons={this.state.pros} />
           <ProsConsList prosCons={this.state.cons} />
         </div>

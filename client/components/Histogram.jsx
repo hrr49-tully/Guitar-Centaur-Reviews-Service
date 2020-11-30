@@ -1,26 +1,34 @@
 import React from 'react';
 import HistogramBar from './HistogramBar.jsx';
 import styles from './css/ReviewSnapshot.css';
-import SortBy from './SortBy.jsx';
+import axios from 'axios';
+
 
 const Histogram = (props) => {
   const [numberStarReviews, setNumberStarReviews] = React.useState(false);
-  let histogram = [];
+  const [histogram, setHistogram] = React.useState([]);
 
   if (!numberStarReviews) {
+    let collection = [];
     for (let i = 1; i < 6; i++) {
-      let histogramBar = props.sortByStars(i);
-      histogram.push(histogramBar);
-      setNumberStarReviews(true);
+      axios.get(`api/reviews/stars/${i}`)
+      .then(res => {
+        collection.push(res.data.length);
+      })
+      .catch(err => {
+        console.error(`get ${endpoint} stars failed: `, err);
+      });
     };
+    setHistogram(collection);
+    setNumberStarReviews(true);
   };
 
   return (
     <section className={styles.snp_box} >
       <div className={styles.snp_boxTitle} >Ratings Distribution</div>
       <div className={styles.snp_textBlock} >
-        {histogram.map(histogram =>
-          <HistogramBar bar={histogram} />
+        {histogram.map(histogramBar =>
+          <HistogramBar number={props.number} bar={histogramBar} />
         )}
       </div>
     </section>
