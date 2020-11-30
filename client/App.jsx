@@ -65,7 +65,7 @@ class App extends React.Component {
       if (res.data.length < this.state.allReviews.length) {
         this.setState({
           allReviews: res.data,
-          currentSort: res.data,
+          currentSort: res.data.slice(0, 10),
           renderedReviews: []
         });
         this.showMoreReviews();
@@ -122,7 +122,7 @@ class App extends React.Component {
         <h1>Review Snapshot</h1>
         <ReviewSummary />
         <div className={pcStyles.snp_section} >
-          <Histogram sortByStars={this.sortByStars} number={this.state.number}/>
+          <Histogram sortByStars={this.sortByStars} number={this.state.number} />
           <ProsConsList prosCons={this.state.pros} />
           <ProsConsList prosCons={this.state.cons} />
         </div>
