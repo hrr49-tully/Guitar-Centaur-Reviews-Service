@@ -7,8 +7,8 @@ const HistogramBar = (props) => {
   const width = (number/props.number) * 100;
 
   return (
-    <div className={style.hover}>
-      <div className={style.popup} >Show reviews with {props.id} stars
+    <div className={style.hover} onClick={() => {props.sortByStars(props.id)}}>
+      <div className={style.popup}>Show reviews with {props.id} stars
         <br/>
         <br/>
         <svg viewBox="-9 -10 52 52" focusable="false" role="presentation">

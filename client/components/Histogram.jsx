@@ -8,9 +8,16 @@ const Histogram = (props) => {
   const [numberStarReviews, setNumberStarReviews] = React.useState(false);
   const [histogram, setHistogram] = React.useState([]);
 
+  const sortArray = (array) => {
+    if (array[0].id > array[1].id) {
+      let temporary = array.splice(0, 1);
+      array = array.concat(temporary)
+    }
+  }
+
   if (!numberStarReviews) {
     let collection = [];
-    for (let i = 1; i < 6; i++) {
+    for (let i = 5; i > 0; i--) {
       axios.get(`api/reviews/stars/${i}`)
       .then(res => {
         const singleBar = {
@@ -32,7 +39,7 @@ const Histogram = (props) => {
       <div className={styles.snp_boxTitle} >Ratings Distribution</div>
       <div className={styles.snp_textBlock} >
         {histogram.map(histogramBar =>
-          <HistogramBar id={histogramBar.id}number={props.number} bar={histogramBar.bar} />
+          <HistogramBar sortByStars={props.sortByStars} id={histogramBar.id} number={props.number} bar={histogramBar.bar} />
         )}
       </div>
     </section>
