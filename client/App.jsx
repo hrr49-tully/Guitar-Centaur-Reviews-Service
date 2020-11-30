@@ -17,13 +17,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      renderedReviews: [],
-      // reviews: [],
       allReviews: [],
       currentSort: [],
       pros: [],
       cons: [],
       number: Math.floor(Math.random() * 30) + 62,
+      index: 0,
     }
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.changeRendered = this.changeRendered.bind(this);
@@ -33,12 +32,11 @@ class App extends React.Component {
 
   //// use this for a onClick of 'Show More!' reviews ////
   showMoreReviews(reviews) {
-    let startIndex = this.state.renderedReviews.length;
+    let startIndex = this.state.index;
     let tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
-    let totalReviews = this.state.renderedReviews.concat(tenMore);
     this.setState({
-      currentSort: totalReviews,
-      renderedReviews: totalReviews,
+      currentSort: tenMore,
+      index: startIndex + 10
     });
   };
 
@@ -50,12 +48,12 @@ class App extends React.Component {
     // };
     if (input.length === this.state.allReviews.length) {
       this.setState({
-        allReviews: input
+        allReviews: input,
       });
     }
     this.setState({
-      renderedReviews: input.slice(0, 10),
-      currentSort: input.slice(0, 10)
+      currentSort: input,
+      index: 10
     });
   };
 
@@ -64,14 +62,15 @@ class App extends React.Component {
     .then(res => {
       if (res.data.length < this.state.allReviews.length) {
         this.setState({
-          allReviews: res.data,
-          currentSort: res.data.slice(0, 10),
-          renderedReviews: []
+          currentSort: res.data,
+          index: 0
         });
-        this.showMoreReviews();
+        // this.showMoreReviews();
       } else {
         this.setState({
-          currentSort: res.data
+          allReviews: res.data,
+          currentSort: res.data,
+          index: 10
         });
       };
     })
@@ -86,7 +85,7 @@ class App extends React.Component {
       this.setState({
         allReviews: res.data,
         currentSort: res.data,
-        renderedReviews: []
+        index: 10,
       });
       this.showMoreReviews();
     })
@@ -126,9 +125,9 @@ class App extends React.Component {
           <ProsConsList prosCons={this.state.pros} />
           <ProsConsList prosCons={this.state.cons} />
         </div>
-        <SortBy renderedReviews={this.state.renderedReviews} reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
+        <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
         <ReviewsList reviews={this.state.currentSort} />
-        <button onClick={ () => {this.showMoreReviews(this.state.allReviews)} }>Show More!</button>
+        <button onClick={ () => {this.showMoreReviews(this.state.currentSort)} }>Show More!</button>
       </div>
     )
   }
