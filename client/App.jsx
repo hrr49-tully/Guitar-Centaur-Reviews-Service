@@ -28,6 +28,7 @@ class App extends React.Component {
     this.changeRendered = this.changeRendered.bind(this);
     this.sortByUpVotes = this.sortByUpVotes.bind(this);
     this.sortByStars = this.sortByStars.bind(this);
+    this.sortByProCon = this.sortByProCon.bind(this);
   }
 
   //// use this for a onClick of 'Show More!' reviews ////
@@ -41,11 +42,6 @@ class App extends React.Component {
   };
 
   changeRendered(input) {
-    // if (!this.state.reviews.length) {
-    //   this.setState({
-    //     reviews: this.state.allReviews
-    //   });
-    // };
     if (input.length === this.state.allReviews.length) {
       this.setState({
         allReviews: input,
@@ -65,7 +61,6 @@ class App extends React.Component {
           currentSort: res.data,
           index: 0
         });
-        // this.showMoreReviews();
       } else {
         this.setState({
           allReviews: res.data,
@@ -92,6 +87,15 @@ class App extends React.Component {
     .catch(err => {
       console.error('sort by upVotes failed: ', err);
     });
+  };
+
+  sortByProCon(proCon, find) {
+    let sortedReviews = [];
+    this.state.allReviews.forEach(review => {
+      const prosCons = review[proCon].split(',');
+      prosCons.includes(find) ? sortedReviews.push(review) : null;
+    });
+    this.changeRendered(sortedReviews);
   };
 
 
@@ -122,8 +126,8 @@ class App extends React.Component {
         <ReviewSummary />
         <div className={pcStyles.snp_section} >
           <Histogram sortByStars={this.sortByStars} number={this.state.number} />
-          <ProsConsList prosCons={this.state.pros} />
-          <ProsConsList prosCons={this.state.cons} />
+          <ProsConsList prosCons={this.state.pros} sortByProCon={this.sortByProCon} />
+          <ProsConsList prosCons={this.state.cons} sortByProCon={this.sortByProCon} cons={'dummy'} />
         </div>
         <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
         <ReviewsList reviews={this.state.currentSort} />

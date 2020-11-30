@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './css/ReviewSnapshot.css';
 
 const ConsEntry = (props) => (
-  <div className={styles.snp_text} >
+  <div className={styles.snp_text} onClick={() => { props.sort(props.proOrCon.toLowerCase(), props.pc.description)}} >
     <div className={styles.snp_popup} >Show reviews with this tag
       <br/>
       <br/>
