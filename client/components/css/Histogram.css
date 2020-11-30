@@ -5,10 +5,64 @@
   margin-left: 85px;
   border-radius: 3px;
   max-width: 320px;
+  margin-top: 18px;
+  height: 20px;
+  padding: 5px 10px;
+  z-index: 0;
 }
 
-.starCount {
+.hover {
+  height: 30px;
+}
+
+.hover:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.hover:hover > .popup {
+  visibility: visible;
+  opacity: .85;
+}
+
+.hover:hover > .popupCaret {
+  visibility: visible;
+  opacity: .85;
+}
+
+.popup {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  margin-top: -69px;
+  margin-left: 8%;
+  background-color: #333;
+  height: 20px;
+  color: #eee;
+  padding: 20px 10px;
+  border-radius: 5px;
+  opacity: 87%;
+}
+
+.popupCaret {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -55%;
+  fill: #333;
+  transform: rotate(270deg);
+}
+
+.numberOfStars {
   position: absolute;
   margin: 0px 20px;
   margin-top: 5px;
+}
+
+.starCount {
+  position: relative;
+  font-size: 14px;
+  margin-top: -25px;
+  margin-left: 90%;
 }

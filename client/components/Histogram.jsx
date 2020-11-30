@@ -13,7 +13,11 @@ const Histogram = (props) => {
     for (let i = 1; i < 6; i++) {
       axios.get(`api/reviews/stars/${i}`)
       .then(res => {
-        collection.push(res.data.length);
+        const singleBar = {
+          id: i,
+          bar: res.data.length
+        };
+        collection.push(singleBar);
       })
       .catch(err => {
         console.error(`get ${endpoint} stars failed: `, err);
@@ -28,7 +32,7 @@ const Histogram = (props) => {
       <div className={styles.snp_boxTitle} >Ratings Distribution</div>
       <div className={styles.snp_textBlock} >
         {histogram.map(histogramBar =>
-          <HistogramBar number={props.number} bar={histogramBar} />
+          <HistogramBar id={histogramBar.id}number={props.number} bar={histogramBar.bar} />
         )}
       </div>
     </section>

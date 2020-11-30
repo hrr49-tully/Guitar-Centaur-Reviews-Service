@@ -31,7 +31,12 @@
   color: #eee;
 }
 
-.snp_text:hover > div {
+.snp_text:hover > .snp_popup {
+  visibility: visible;
+  opacity: .85;
+}
+
+.snp_text:hover > .snp_popup_caret {
   visibility: visible;
   opacity: .85;
 }
