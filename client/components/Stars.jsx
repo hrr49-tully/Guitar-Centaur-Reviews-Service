@@ -8,8 +8,7 @@ const Stars = (props) => {
   let reviewStars = [];
   let filledStars = props.stars;
   let decimal = filledStars.toString().slice(2, 3);
-  console.log(filledStars, decimal);
-  Number(decimal) < 9 && Number(decimal) > 3 ? filledStars -= 1 : decimal = null;
+  Number(decimal) < 9 && Number(decimal) > 2 ? filledStars -= 1 : decimal = null;
   for (let i = 0; i < filledStars; i++) {
     reviewStars.push(<img className={styles.stars} src={yellowStar} alt='yellow star' />);
   }

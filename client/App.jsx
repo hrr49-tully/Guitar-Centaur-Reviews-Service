@@ -23,6 +23,8 @@ class App extends React.Component {
       cons: [],
       number: Math.floor(Math.random() * 30) + 62,
       index: 0,
+      showNextButton: true,
+      showPreviousButton: false
     }
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.changeRendered = this.changeRendered.bind(this);
@@ -33,12 +35,34 @@ class App extends React.Component {
 
   //// use this for a onClick of 'Show More!' reviews ////
   showMoreReviews(reviews) {
-    let startIndex = this.state.index;
-    let tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
+    const startIndex = this.state.index;
+    const tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
     this.setState({
       currentSort: tenMore,
-      index: startIndex + 10
+      index: startIndex + 10,
+      showPreviousButton: true,
     });
+    if (startIndex === 90) {
+      this.setState({
+        showNextButton: false
+      });
+    };
+  };
+
+  showPreviousReviews(reviews) {
+    const endIndex = this.state.index - 10;
+    const tenLess = this.state.allReviews.slice(endIndex - 10, endIndex)
+    this.setState({
+      currentSort: tenLess,
+      index: endIndex - 10,
+      showNextButton: true,
+    });
+    if (!(endIndex - 10)) {
+      this.setState({
+        showPreviousButton: false,
+        index: 10
+      })
+    }
   };
 
   changeRendered(input) {
@@ -132,7 +156,11 @@ class App extends React.Component {
         </div>
         <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
         <ReviewsList reviews={this.state.currentSort} />
-        <button onClick={ () => {this.showMoreReviews(this.state.currentSort)} }>Show More!</button>
+        <div className={styles.nextPrevious}>
+          {this.state.showPreviousButton ? <button className={styles.nextButton} onClick={ () => {this.showPreviousReviews(this.state.currentSort)}}>&larr; Previous</button> : null}
+          &nbsp; | &nbsp;
+          {this.state.showNextButton ? <button className={styles.nextButton} onClick={ () => {this.showMoreReviews(this.state.currentSort)} }>Next &rarr; </button> : null}
+        </div>
       </div>
       </div>
     )
