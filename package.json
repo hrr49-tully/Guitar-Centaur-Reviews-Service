@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "babel-plugin-react-css-modules": "^5.2.6",
+    "compression": "^1.7.4",
     "css-loader": "^5.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",

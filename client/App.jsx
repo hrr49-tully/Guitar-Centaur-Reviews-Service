@@ -121,9 +121,10 @@ class App extends React.Component {
 
   render() {
     return (
+      <div>
+        <h1 className={styles.header}>Review Snapshot</h1>
       <div className={styles.body}>
-        <h1>Review Snapshot</h1>
-        <ReviewSummary />
+        <h1 style={{'color': 'white'}}>REVIEWS </h1>
         <div className={pcStyles.snp_section} >
           <Histogram sortByStars={this.sortByStars} number={this.state.number} />
           <ProsConsList prosCons={this.state.pros} sortByProCon={this.sortByProCon} />
@@ -132,6 +133,7 @@ class App extends React.Component {
         <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
         <ReviewsList reviews={this.state.currentSort} />
         <button onClick={ () => {this.showMoreReviews(this.state.currentSort)} }>Show More!</button>
+      </div>
       </div>
     )
   }

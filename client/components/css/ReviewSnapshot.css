@@ -10,15 +10,13 @@
 .snp_box {
   float: left;
   width: 500px;
-  margin-right: 1%;
+
   min-height: 259px;
   border: 1px solid #ccc;
   border-radius: 2px;
   padding-bottom: 15px;
-}
-
-.snp_textBlock {
-
+  margin-right: 20px;
+  max-width: 480px;
 }
 
 .snp_text {
@@ -86,4 +84,57 @@
   padding: 10px;
   font-weight: bold;
   box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.snapshot {
+  display: inline-flex;
+  position: absolute;
+  margin-top: -60px;
+  color: white;
+  margin-left: -133px;
+}
+
+.text {
+  color: black;
+  display: inline-flex;
+}
+
+.respondents {
+  position: absolute;
+  margin-left: 365%;
+  width: 170px;
+  text-align: left;
+  margin-top: -10px;
+}
+
+.respondents_text {
+  font-size: 11px;
+}
+
+.percentage {
+  font-size: 28px;
+  position: absolute;
+  margin-left: -37%;
+  margin-top: 4px;
+}
+
+.checkmark {
+  height: 40px;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: -3px;
+}
+
+.average {
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  padding: 7px 8px 5px;
+  margin: 0 8px;
+  margin-top: -5px;
+}
+
+.count {
+  font-size: 13px;
+  margin-top: 3px;
 }
