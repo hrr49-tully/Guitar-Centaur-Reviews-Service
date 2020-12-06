@@ -22,7 +22,7 @@ for (let i = 0; i < 100; i++) {
   let experienceArr = ['Kook', 'Novice', 'Experienced', 'Rockstar'];
 
   // experience variable to use in review below
-  let randomExperience = experienceArr[Math.round(Math.random() * 3)]
+  let randomExperience = experienceArr[Math.round(Math.random() * 3)];
 
   // random number for how many pros/cons to list
   let numberOfPros = Math.ceil(Math.random() * 5);
@@ -35,14 +35,14 @@ for (let i = 0; i < 100; i++) {
   // push random pros/cons into respective arrays & increment number of times that pro/con has been selected
   for (let i = 0; i < numberOfPros; i++) {
     let index = Math.floor(Math.random() * prosArr.length);
-    let pro = prosArr.splice(index, 1).toString()
+    let pro = prosArr.splice(index, 1).toString();
     let prosIndex = pros.indexOf(pro);
     reviewPros.push(pro);
     prosCount[prosIndex] += 1;
   }
   for (let i = 0; i < numberOfCons; i++) {
     let index = Math.floor(Math.random() * consArr.length);
-    let con = consArr.splice(index, 1).toString()
+    let con = consArr.splice(index, 1).toString();
     let consIndex = cons.indexOf(con);
     reviewCons.push(con);
     consCount[index] += 1;
@@ -61,7 +61,7 @@ for (let i = 0; i < 100; i++) {
       stringArr[i] = stringArr[i].toLowerCase();
     }
     return stringArr.join(' ');
-  }
+  };
 
   capitalizeTitle = (string) => {
     let stringArr = string.split(/[ -]+/);
@@ -71,7 +71,7 @@ for (let i = 0; i < 100; i++) {
       stringArr[i] = word.join('');
     }
     return stringArr.join(' ');
-  }
+  };
 
   let contents = description(faker.random.words(40));
   let title = capitalizeTitle(faker.random.words(2) + ' ' + faker.commerce.productName());
@@ -91,7 +91,7 @@ for (let i = 0; i < 100; i++) {
     pros: reviewPros.toString(),
     cons: reviewCons.toString(),
     wouldRecommend: faker.random.boolean()
-  }
+  };
   reviews.push(randomReview);
 }
 
@@ -102,7 +102,7 @@ for (let i = 0; i < pros.length; i++) {
     proID: i + 1,
     description: pros[i],
     count: prosCount[i]
-  }
+  };
   prosObjects.push(singlePro);
 }
 
