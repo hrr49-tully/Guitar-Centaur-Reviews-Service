@@ -20,7 +20,7 @@ app.get('/api/reviews/:endpoint', (req, res) => {
     } else {
       console.log(`${table} query successful`);
       res.send(JSON.stringify(data));
-    };
+    }
   });
 });
 
@@ -33,7 +33,7 @@ app.get('/api/reviews/stars/:endpoint', (req, res) => {
       } else {
         console.log(`reviews by stars ${endpoint} successful`);
         res.send(JSON.stringify(data));
-      };
+      }
     });
   } else {
     db.query(`select * from reviews where stars=${endpoint}`, (err, data) => {
@@ -42,19 +42,19 @@ app.get('/api/reviews/stars/:endpoint', (req, res) => {
       } else {
         console.log(`reviews with ${endpoint} stars query successful`);
         res.send(JSON.stringify(data));
-      };
+      }
     });
-  };
+  }
 });
 
 app.get('/api/reviews/sort/upVotes', (req, res) => {
-  db.query(`select * from reviews order by upVotes desc`, (err, data) => {
+  db.query('select * from reviews order by upVotes desc', (err, data) => {
     if (err) {
-      console.error('reviews sorted by upVotes query failed: ', err)
+      console.error('reviews sorted by upVotes query failed: ', err);
     } else {
       console.log('reviews sorted by upVotes query successful');
       res.send(JSON.stringify(data));
-    };
+    }
   });
 });
 
