@@ -18,7 +18,7 @@
 
 ## Usage
 
-> This is a standalone version of a review component from Guitar Center's website that will have full functionaliy to sort by lowest/highest reviews as well as best rated, oldest, etc.
+> This is a standalone version of a review component for a online music retailer's website that will have full functionaliy to sort by lowest/highest reviews as well as best rated, oldest, etc.
 
 ## Requirements
 
