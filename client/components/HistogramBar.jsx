@@ -4,10 +4,10 @@ import style from './css/Histogram.css';
 const HistogramBar = (props) => {
   const [count, increment] = React.useState(0);
   const number = Math.round(props.bar * (.01 * props.number));
-  const width = (number/props.number) * 100;
+  const width = (number / props.number) * 100;
 
   return (
-    <div className={style.hover} onClick={() => {props.sortByStars(props.id)}}>
+    <div className={style.hover} onClick={() => { props.sortByStars(props.id); }}>
       <div className={style.popup}>Show reviews with {props.id} stars
         <br/>
         <br/>
@@ -17,13 +17,13 @@ const HistogramBar = (props) => {
           </g>
         </svg>
       </div>
-        <span className={style.numberOfStars}>{props.id} Stars</span>
-        <div  className={style.bar} style={{width : `${width}%`}} />
-        <div className={style.starCount}>{number}</div>
+      <span className={style.numberOfStars}>{props.id} Stars</span>
+      <div className={style.bar} style={{width: `${width}%`}} />
+      <div className={style.starCount}>{number}</div>
     </div>
-  )
+  );
 
-}
+};
 
 
 export default HistogramBar;

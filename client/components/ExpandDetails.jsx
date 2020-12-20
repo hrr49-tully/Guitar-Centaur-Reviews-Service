@@ -8,15 +8,15 @@ const ExpandDetails = (props) => {
     <section>
       <div className={styles.moreDetailsProsCons} >
         <div className={styles.moreDetailsPCSection}>
-        <div className={styles.moreDetailsPCHeader}>Pros</div>
+          <div className={styles.moreDetailsPCHeader}>Pros</div>
           {pros[0].map(pro =>
-          <div className={styles.moreDetailsSinglePC}>{pro}</div>
+            <div className={styles.moreDetailsSinglePC}>{pro}</div>
           )}
         </div>
         <div className={styles.moreDetailsPCSection}>
           <div className={styles.moreDetailsPCHeader}>Cons</div>
           {cons[0].map(con =>
-          <div className={styles.moreDetailsSinglePC}>{con}</div>
+            <div className={styles.moreDetailsSinglePC}>{con}</div>
           )}
         </div>
       </div>

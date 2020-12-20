@@ -35,7 +35,7 @@ const ReviewEntry = (props) => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default ReviewEntry;

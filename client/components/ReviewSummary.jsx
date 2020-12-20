@@ -19,7 +19,7 @@ const ReviewSummary = (props) => {
             <span className={styles.percentage} >
               <img className={styles.checkmark} src={checkmark} alt='checkmark' />
               {percentage}%
-              </span>
+            </span>
             of respondents would recommend this to a friend
           </span>
         </div>

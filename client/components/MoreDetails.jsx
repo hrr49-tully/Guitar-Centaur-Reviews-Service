@@ -30,8 +30,8 @@ const MoreDetails = (props) => {
       </button>
       { showDetails ? <ExpandDetails review={review} /> : null }
     </section>
-  )
-}
+  );
+};
 
 
 export default MoreDetails;

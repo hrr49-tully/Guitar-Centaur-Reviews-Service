@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const src = path.join(__dirname, '/client/dist')
+const src = path.join(__dirname, '/client/dist');
 
 module.exports = {
   entry: './client/index.jsx',
@@ -29,19 +29,19 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
-      }
-    },
-    {
-      test: /\.(png|jpg|gif)$/i,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
+        }
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
           },
-        },
-      ],
-    }]
+        ],
+      }]
   },
   watch: true,
   node: {
@@ -54,5 +54,5 @@ module.exports = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
   },
-}
+};
 

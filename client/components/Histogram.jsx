@@ -12,29 +12,29 @@ const Histogram = (props) => {
   const sortArray = (array) => {
     if (array[0].id > array[1].id) {
       let temporary = array.splice(0, 1);
-      array = array.concat(temporary)
+      array = array.concat(temporary);
     }
-  }
+  };
 
 
   if (!numberStarReviews) {
     let collection = [];
     for (let i = 5; i > 0; i--) {
       axios.get(`api/reviews/stars/${i}`)
-      .then(res => {
-        const singleBar = {
-          id: i,
-          bar: res.data.length
-        };
-        collection.push(singleBar);
-      })
-      .catch(err => {
-        console.error(`get ${endpoint} stars failed: `, err);
-      });
-    };
+        .then(res => {
+          const singleBar = {
+            id: i,
+            bar: res.data.length
+          };
+          collection.push(singleBar);
+        })
+        .catch(err => {
+          console.error(`get ${endpoint} stars failed: `, err);
+        });
+    }
     setHistogram(collection);
     setNumberStarReviews(true);
-  };
+  }
 
 
   if (histogram.length) {
@@ -42,14 +42,14 @@ const Histogram = (props) => {
       let averageFromStars = 0;
       for (let i = 0; i < histogram.length; i++) {
         const count = (Math.round(histogram[i].bar * (props.number * .01)));
-        const stars = histogram[i].id
+        const stars = histogram[i].id;
         averageFromStars += count * stars;
-      };
+      }
       const random = Math.random();
       averageFromStars = (averageFromStars / props.number + random).toString().slice(0, 3);
       setAverage(averageFromStars);
-    };
-  };
+    }
+  }
 
   return (
     console.log(average),

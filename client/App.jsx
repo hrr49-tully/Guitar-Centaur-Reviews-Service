@@ -25,7 +25,7 @@ class App extends React.Component {
       index: 0,
       showNextButton: true,
       showPreviousButton: false
-    }
+    };
     this.showMoreReviews = this.showMoreReviews.bind(this);
     this.changeRendered = this.changeRendered.bind(this);
     this.sortByUpVotes = this.sortByUpVotes.bind(this);
@@ -36,7 +36,7 @@ class App extends React.Component {
   //// use this for a onClick of 'Show More!' reviews ////
   showMoreReviews(reviews) {
     const startIndex = this.state.index;
-    const tenMore = this.state.allReviews.slice(startIndex, startIndex + 10)
+    const tenMore = this.state.allReviews.slice(startIndex, startIndex + 10);
     this.setState({
       currentSort: tenMore,
       index: startIndex + 10,
@@ -46,12 +46,12 @@ class App extends React.Component {
       this.setState({
         showNextButton: false
       });
-    };
-  };
+    }
+  }
 
   showPreviousReviews(reviews) {
     const endIndex = this.state.index - 10;
-    const tenLess = this.state.allReviews.slice(endIndex - 10, endIndex)
+    const tenLess = this.state.allReviews.slice(endIndex - 10, endIndex);
     this.setState({
       currentSort: tenLess,
       index: endIndex - 10,
@@ -61,9 +61,9 @@ class App extends React.Component {
       this.setState({
         showPreviousButton: false,
         index: 10
-      })
+      });
     }
-  };
+  }
 
   changeRendered(input) {
     if (input.length === this.state.allReviews.length) {
@@ -75,43 +75,43 @@ class App extends React.Component {
       currentSort: input,
       index: 10
     });
-  };
+  }
 
   sortByStars(endpoint) {
     axios.get(`api/reviews/stars/${endpoint}`)
-    .then(res => {
-      if (res.data.length < this.state.allReviews.length) {
-        this.setState({
-          currentSort: res.data,
-          index: 0
-        });
-      } else {
-        this.setState({
-          allReviews: res.data,
-          currentSort: res.data,
-          index: 10
-        });
-      };
-    })
-    .catch(err => {
-      console.error(`get ${endpoint} stars failed: `, err);
-    });
-  };
+      .then(res => {
+        if (res.data.length < this.state.allReviews.length) {
+          this.setState({
+            currentSort: res.data,
+            index: 0
+          });
+        } else {
+          this.setState({
+            allReviews: res.data,
+            currentSort: res.data,
+            index: 10
+          });
+        }
+      })
+      .catch(err => {
+        console.error(`get ${endpoint} stars failed: `, err);
+      });
+  }
 
   sortByUpVotes() {
     axios.get('api/reviews/sort/upVotes')
-    .then(res => {
-      this.setState({
-        allReviews: res.data,
-        currentSort: res.data,
-        index: 10,
+      .then(res => {
+        this.setState({
+          allReviews: res.data,
+          currentSort: res.data,
+          index: 10,
+        });
+        this.showMoreReviews();
+      })
+      .catch(err => {
+        console.error('sort by upVotes failed: ', err);
       });
-      this.showMoreReviews();
-    })
-    .catch(err => {
-      console.error('sort by upVotes failed: ', err);
-    });
-  };
+  }
 
   sortByProCon(proCon, find) {
     let sortedReviews = [];
@@ -120,21 +120,21 @@ class App extends React.Component {
       prosCons.includes(find) ? sortedReviews.push(review) : null;
     });
     this.changeRendered(sortedReviews);
-  };
+  }
 
 
   getData(filepath, stateValue) {
     let url = {};
     url.filepath = filepath;
     axios.get(filepath)
-    .then(res => {
-      var newState = {};
-      newState[stateValue] = res.data;
-      this.setState(newState);
-    })
-    .catch(err => {
-      console.error('get request failed: ', err);
-    });
+      .then(res => {
+        var newState = {};
+        newState[stateValue] = res.data;
+        this.setState(newState);
+      })
+      .catch(err => {
+        console.error('get request failed: ', err);
+      });
   }
 
   componentDidMount() {
@@ -147,23 +147,23 @@ class App extends React.Component {
     return (
       <div>
         <h1 className={styles.header}>Review Snapshot</h1>
-      <div className={styles.body}>
-        <h1 style={{'color': 'white'}}>REVIEWS </h1>
-        <div className={pcStyles.snp_section} >
-          <Histogram sortByStars={this.sortByStars} number={this.state.number} />
-          <ProsConsList prosCons={this.state.pros} sortByProCon={this.sortByProCon} />
-          <ProsConsList prosCons={this.state.cons} sortByProCon={this.sortByProCon} cons={'dummy'} />
-        </div>
-        <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
-        <ReviewsList reviews={this.state.currentSort} />
-        <div className={styles.nextPrevious}>
-          {this.state.showPreviousButton ? <button className={styles.nextButton} onClick={ () => {this.showPreviousReviews(this.state.currentSort)}}>&larr; Previous</button> : null}
-          &nbsp; | &nbsp;
-          {this.state.showNextButton ? <button className={styles.nextButton} onClick={ () => {this.showMoreReviews(this.state.currentSort)} }>Next &rarr; </button> : null}
+        <div className={styles.body}>
+          <h1 style={{'color': 'white'}}>REVIEWS </h1>
+          <div className={pcStyles.snp_section} >
+            <Histogram sortByStars={this.sortByStars} number={this.state.number} />
+            <ProsConsList prosCons={this.state.pros} sortByProCon={this.sortByProCon} />
+            <ProsConsList prosCons={this.state.cons} sortByProCon={this.sortByProCon} cons={'dummy'} />
+          </div>
+          <SortBy reviews={this.state.allReviews} changeRendered={this.changeRendered} sortByStars={this.sortByStars} sortByUpVotes={this.sortByUpVotes} number={this.state.number} />
+          <ReviewsList reviews={this.state.currentSort} />
+          <div className={styles.nextPrevious}>
+            {this.state.showPreviousButton ? <button className={styles.nextButton} onClick={ () => { this.showPreviousReviews(this.state.currentSort); } }>&larr; Previous</button> : null}
+            &nbsp; | &nbsp;
+            {this.state.showNextButton ? <button className={styles.nextButton} onClick={ () => { this.showMoreReviews(this.state.currentSort); } }>Next &rarr; </button> : null}
+          </div>
         </div>
       </div>
-      </div>
-    )
+    );
   }
 }
 

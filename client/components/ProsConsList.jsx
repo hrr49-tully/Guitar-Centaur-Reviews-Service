@@ -15,7 +15,7 @@ const ConsList = (props) => {
         )}
       </div>
     </section>
-  )
+  );
 };
 
 
