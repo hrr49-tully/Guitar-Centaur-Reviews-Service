@@ -14,6 +14,13 @@ const convertMonthToNum = (month) => {
   return result;
 };
 
+const buttonClicked = (input, input2) => {
+  document.getElementById(input).classList.add(styles.thumbsButtonClicked, styles.thumbsButtonClickedNumber);
+  document.getElementById(input2).classList.remove(styles.thumbsButton);
+  document.getElementById(input2).classList.add(styles.thumbsOppositeClicked);
+};
+
 module.exports = {
   convertMonthToNum
+
 };
