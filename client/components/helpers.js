@@ -21,6 +21,6 @@ const buttonClicked = (input, input2) => {
 };
 
 module.exports = {
-  convertMonthToNum
-
+  convertMonthToNum,
+  buttonClicked
 };
